@@ -1,0 +1,1583 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>M&S FFP Rehberi 2026</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+  background:#F0EFE9;color:#1A1918;font-size:14px;line-height:1.6;}
+.shell{display:grid;grid-template-columns:260px 1fr;min-height:100vh;}
+
+/* SIDEBAR */
+.sb{background:#fff;border-right:1px solid #E2E0DA;
+  display:flex;flex-direction:column;position:sticky;top:0;height:100vh;overflow:hidden;}
+.sb-head{padding:14px;border-bottom:1px solid #E2E0DA;flex-shrink:0;}
+.sb-logo{display:flex;align-items:center;gap:9px;margin-bottom:10px;}
+.sb-logo-icon{width:32px;height:32px;background:#E30613;border-radius:8px;
+  display:flex;align-items:center;justify-content:center;}
+.sb-logo-icon svg{width:16px;height:16px;fill:#fff;}
+.sb-title{font-size:12px;font-weight:600;}
+.sb-sub{font-size:10px;color:#9A9794;}
+.sb-ms-note{font-size:10px;color:#7A5800;background:#FDF5E0;
+  border:1px solid #F0CC6A;border-radius:5px;padding:5px 8px;margin-top:6px;}
+.sb-search{display:flex;align-items:center;gap:6px;padding:6px 9px;
+  background:#F7F6F1;border:1px solid #E2E0DA;border-radius:6px;margin-top:8px;}
+.sb-search input{flex:1;font-size:11px;border:none;outline:none;background:transparent;color:#1A1918;}
+.sb-search input::placeholder{color:#9A9794;}
+.nav-tabs{display:flex;padding:8px 12px 0;gap:3px;border-bottom:1px solid #E2E0DA;flex-shrink:0;}
+.nav-tab{flex:1;padding:6px 0;font-size:11px;font-weight:500;color:#9A9794;
+  cursor:pointer;text-align:center;border-bottom:2px solid transparent;
+  background:none;border-top:none;border-left:none;border-right:none;transition:all .12s;}
+.nav-tab.active{color:#E30613;border-bottom-color:#E30613;}
+.sb-list{flex:1;overflow-y:auto;padding:4px 0 12px;}
+.sb-sec{font-size:9px;font-weight:700;color:#9A9794;text-transform:uppercase;
+  letter-spacing:.08em;padding:9px 13px 3px;}
+.pi{display:flex;align-items:center;gap:9px;padding:7px 12px;
+  cursor:pointer;border-left:3px solid transparent;transition:all .1s;}
+.pi:hover{background:#F7F6F1;}
+.pi.active{background:rgba(227,6,19,.07);border-left-color:#E30613;}
+.pi-badge{width:30px;height:30px;border-radius:7px;display:flex;align-items:center;
+  justify-content:center;flex-shrink:0;font-size:9px;font-weight:800;color:#fff;
+  box-shadow:0 1px 3px rgba(0,0,0,.2);font-family:"SF Mono",monospace;}
+.pi-info{flex:1;min-width:0;}
+.pi-name{font-size:12px;font-weight:500;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+.pi.active .pi-name{color:#E30613;font-weight:600;}
+.pi-airline{font-size:10px;color:#9A9794;}
+.pi-val{font-size:10px;font-weight:700;color:#B8860B;flex-shrink:0;}
+.sb-foot{padding:8px 12px;border-top:1px solid #E2E0DA;font-size:9px;color:#9A9794;flex-shrink:0;}
+
+/* CC */
+.cc-wrap{padding:4px 0 12px;}
+.cc-item{display:flex;align-items:center;gap:8px;padding:5px 12px;cursor:pointer;}
+.cc-item:hover{background:#F7F6F1;}
+.cc-item input{accent-color:#E30613;cursor:pointer;}
+.cc-dot{width:8px;height:8px;border-radius:50%;flex-shrink:0;}
+.cc-name{font-size:11px;flex:1;}
+.cc-count{font-size:10px;color:#9A9794;padding:3px 12px;}
+.cc-btn{margin:5px 12px;padding:8px;background:#E30613;color:#fff;border:none;
+  border-radius:6px;font-size:12px;font-weight:600;cursor:pointer;width:calc(100% - 24px);}
+
+/* MAIN */
+.main{min-width:0;}
+.welcome{padding:40px 36px;max-width:660px;}
+.welcome-ey{font-size:10px;font-weight:700;color:#E30613;
+  text-transform:uppercase;letter-spacing:.1em;margin-bottom:8px;}
+.welcome h1{font-size:26px;font-weight:700;line-height:1.2;margin-bottom:8px;}
+.welcome p{font-size:13px;color:#5A5855;line-height:1.75;}
+.wstats{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:20px;}
+.wstat{background:#fff;border:1px solid #E2E0DA;border-radius:10px;padding:14px;}
+.wstat-n{font-size:22px;font-weight:700;line-height:1;}
+.wstat-l{font-size:10px;color:#9A9794;margin-top:3px;}
+
+/* PROG HEADER */
+.prog-hdr{padding:18px 24px 14px;background:#fff;border-bottom:1px solid #E2E0DA;
+  display:flex;align-items:flex-start;gap:14px;}
+.prog-hero{width:50px;height:50px;border-radius:11px;display:flex;align-items:center;
+  justify-content:center;flex-shrink:0;font-size:11px;font-weight:800;color:#fff;
+  box-shadow:0 2px 8px rgba(0,0,0,.2);font-family:"SF Mono",monospace;}
+.ph-info{flex:1;}
+.ph-name{font-size:19px;font-weight:700;line-height:1.2;}
+.ph-airline{font-size:12px;color:#5A5855;margin-top:3px;}
+.ph-tags{display:flex;gap:5px;flex-wrap:wrap;margin-top:7px;}
+.tag{font-size:10px;padding:2px 8px;border-radius:20px;
+  border:1px solid #D0CFC9;color:#5A5855;background:#F7F6F1;}
+.tag-r{background:rgba(227,6,19,.07);border-color:rgba(227,6,19,.2);color:#E30613;}
+.tag-gold{background:#FDF5E0;border-color:#F0CC6A;color:#7A5800;font-weight:600;}
+
+/* ON POINT KUTU */
+.op-box{margin:0 24px 0;
+  background:linear-gradient(135deg,#0a1628,#1a3a5c);
+  border:1px solid #2a4a7a;border-radius:10px;padding:14px 16px;position:relative;}
+.op-tag{position:absolute;top:-9px;left:14px;
+  font-size:9px;font-weight:700;background:#FFD700;color:#0a1628;
+  padding:2px 8px;border-radius:20px;text-transform:uppercase;letter-spacing:.06em;}
+.op-grid{display:flex;align-items:center;gap:14px;flex-wrap:wrap;margin-top:4px;}
+.op-rank-n{font-size:30px;font-weight:800;color:#FFD700;line-height:1;min-width:52px;text-align:center;}
+.op-rank-l{font-size:9px;color:#8ab4e8;text-transform:uppercase;text-align:center;}
+.op-sep{width:1px;height:40px;background:#2a4a7a;flex-shrink:0;}
+.op-main{flex:1;}
+.op-val{font-size:24px;font-weight:700;color:#fff;line-height:1;}
+.op-val-l{font-size:10px;color:#8ab4e8;margin-top:2px;}
+.op-right{display:flex;flex-direction:column;gap:4px;}
+.op-up{font-size:11px;padding:3px 9px;border-radius:20px;font-weight:600;
+  background:rgba(74,205,108,.15);color:#4ACD6C;border:1px solid rgba(74,205,108,.3);}
+.op-dn{font-size:11px;padding:3px 9px;border-radius:20px;font-weight:600;
+  background:rgba(227,6,19,.1);color:#E30613;border:1px solid rgba(227,6,19,.2);}
+.op-rank23{font-size:10px;color:#4a6a9a;}
+.op-cpp{font-size:10px;color:#8ab4e8;}
+.op-src{font-size:9px;color:#4a6a9a;margin-top:8px;padding-top:6px;border-top:1px solid #1a3060;}
+
+/* TABS */
+.tab-row{display:flex;border-bottom:1px solid #E2E0DA;background:#fff;padding:0 24px;}
+.prog-tab{padding:10px 16px;font-size:12px;font-weight:500;color:#9A9794;cursor:pointer;
+  border-bottom:2px solid transparent;background:none;
+  border-top:none;border-left:none;border-right:none;transition:all .12s;}
+.prog-tab.active{color:#E30613;border-bottom-color:#E30613;}
+
+/* CONTENT */
+.content{padding:20px 24px 32px;max-width:860px;}
+.sec{margin-bottom:20px;}
+.sec-title{font-size:10px;font-weight:700;color:#9A9794;text-transform:uppercase;
+  letter-spacing:.07em;margin-bottom:7px;padding-bottom:6px;border-bottom:1px solid #E2E0DA;}
+.sec-body{font-size:13px;color:#1A1918;line-height:1.8;}
+
+/* TIER */
+.tier-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(175px,1fr));gap:7px;}
+.tier-card{border-radius:10px;border:1px solid #E2E0DA;background:#fff;
+  cursor:pointer;overflow:hidden;transition:border-color .15s;}
+.tier-card:hover{border-color:#E30613;}
+.tier-card.open{border-color:#E30613;}
+.tier-top{padding:11px 11px 0;}
+.tier-hdr{display:flex;align-items:center;justify-content:space-between;gap:5px;}
+.tier-dot{width:8px;height:8px;border-radius:50%;flex-shrink:0;}
+.tier-name{font-size:12px;font-weight:600;flex:1;}
+.tier-arrow{font-size:10px;color:#9A9794;transition:transform .2s;}
+.tier-card.open .tier-arrow{transform:rotate(180deg);color:#E30613;}
+.tier-req{font-size:10px;color:#9A9794;margin:3px 0 8px;}
+.tier-perks{font-size:11px;color:#5A5855;line-height:1.6;padding:0 11px 10px;}
+.tier-hint{font-size:10px;color:#9A9794;padding:5px 11px;font-style:italic;border-top:1px solid #E2E0DA;}
+.tier-det{display:none;padding:9px 11px;border-top:1px solid #E2E0DA;background:#F7F6F1;}
+.tier-card.open .tier-det{display:block;}
+.det-lbl{font-size:9px;font-weight:700;color:#9A9794;text-transform:uppercase;
+  letter-spacing:.07em;margin-bottom:5px;}
+.det-row{display:flex;gap:7px;padding:4px 0;border-bottom:1px solid #E2E0DA;align-items:flex-start;}
+.det-row:last-child{border-bottom:none;}
+.det-icon{font-size:12px;flex-shrink:0;}
+.det-sub{font-size:10px;font-weight:600;color:#9A9794;}
+.det-text{font-size:11px;color:#1A1918;line-height:1.5;}
+.life-div{font-size:9px;font-weight:700;color:#0B4FA3;text-transform:uppercase;
+  letter-spacing:.06em;margin:8px 0 4px;padding-top:8px;border-top:1px dashed #D0CFC9;}
+
+/* NEWS */
+.news-box{background:#FDF5E0;border:1px solid #F0CC6A;border-radius:10px;padding:13px 15px;}
+.news-note{font-size:10px;color:#7A5800;opacity:.8;padding:4px 7px;
+  background:rgba(122,88,0,.05);border-radius:4px;margin-bottom:9px;}
+.news-item{padding:7px 0;border-bottom:1px solid #F0CC6A;}
+.news-item:last-child{border-bottom:none;}
+.news-top{display:flex;align-items:center;gap:6px;margin-bottom:2px;}
+.news-date{font-size:10px;color:#7A5800;font-weight:600;}
+.news-fresh{font-size:9px;font-weight:700;padding:1px 6px;border-radius:20px;
+  background:#EAF4ED;color:#1E7B34;}
+.news-text{font-size:12px;line-height:1.65;}
+
+/* KAMPANYA */
+.camp-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(235px,1fr));gap:8px;}
+.camp-card{background:#fff;border:1px solid #E2E0DA;border-radius:10px;
+  padding:12px 13px;border-left:3px solid #D0CFC9;}
+.camp-card.bonus{border-left-color:#1E7B34;}
+.camp-card.promosyon{border-left-color:#7A5800;}
+.camp-card.kart{border-left-color:#0B4FA3;}
+.camp-card.hedefli{border-left-color:#8B5CF6;}
+.camp-card.uyari{border-left-color:#E30613;}
+.camp-type{font-size:9px;font-weight:700;color:#9A9794;text-transform:uppercase;margin-bottom:3px;}
+.camp-top{display:flex;align-items:flex-start;justify-content:space-between;gap:7px;margin-bottom:4px;}
+.camp-title{font-size:12px;font-weight:600;flex:1;}
+.camp-badge{font-size:9px;padding:2px 7px;border-radius:20px;font-weight:600;white-space:nowrap;
+  background:#EAF4ED;color:#1E7B34;}
+.camp-detail{font-size:11px;color:#5A5855;line-height:1.6;}
+
+/* INSIGHT */
+.insight-box{background:#EAF4ED;border:1px solid #A8D9B4;border-radius:10px;padding:13px 15px;}
+.insight-title{font-size:10px;font-weight:700;color:#1E7B34;text-transform:uppercase;
+  letter-spacing:.07em;margin-bottom:9px;}
+.insight-item{display:flex;gap:9px;padding:7px 0;border-bottom:1px solid #A8D9B4;}
+.insight-item:last-child{border-bottom:none;}
+.insight-number{font-size:15px;font-weight:700;color:#1E7B34;flex-shrink:0;width:18px;}
+.insight-text{font-size:12px;line-height:1.65;}
+
+/* COMPARE */
+.mc-hdr{padding:18px 24px 14px;background:#fff;border-bottom:1px solid #E2E0DA;}
+.mc-title{font-size:19px;font-weight:700;margin-bottom:3px;}
+.mc-sub{font-size:12px;color:#5A5855;}
+.mc-content{padding:20px 24px;}
+.mc-wrap{overflow-x:auto;border-radius:10px;border:1px solid #E2E0DA;margin-bottom:16px;}
+.mc-table{width:100%;border-collapse:collapse;font-size:12px;}
+.mc-table th{background:#1A1918;color:#fff;padding:9px 11px;text-align:left;font-size:11px;white-space:nowrap;}
+.mc-table th:first-child{background:#E30613;}
+.mc-table td{padding:8px 11px;border-bottom:1px solid #E2E0DA;vertical-align:top;line-height:1.5;}
+.mc-table tr:last-child td{border-bottom:none;}
+.mc-table tr:hover td{background:#F7F6F1;}
+.mc-lbl{font-weight:600;font-size:11px;background:#F7F6F1!important;}
+.mc-phd{display:flex;align-items:center;gap:5px;}
+.mc-badge{width:20px;height:20px;border-radius:4px;display:flex;align-items:center;
+  justify-content:center;font-size:7px;font-weight:800;color:#fff;font-family:"SF Mono",monospace;}
+.mc-op{font-weight:700;color:#FFD700;background:#0a1628!important;}
+.mc-print{padding:6px 13px;background:#1A1918;color:#fff;border:none;border-radius:6px;
+  font-size:11px;font-weight:600;cursor:pointer;margin-bottom:16px;}
+
+@media(max-width:700px){.shell{grid-template-columns:1fr;}.sb{position:static;height:auto;}.wstats{grid-template-columns:1fr 1fr;}}
+@media print{.sb{display:none;}.mc-print{display:none;}}
+
+.compare-grid{display:grid;grid-template-columns:1fr 1fr;gap:9px;margin-top:0;}
+.compare-col{padding:11px;border-radius:10px;border:1px solid #E2E0DA;background:#F7F6F1;}
+.compare-ms{background:rgba(227,6,19,.07);border-color:rgba(227,6,19,.2);}
+.compare-head{font-size:11px;font-weight:600;margin-bottom:7px;color:#5A5855;}
+.compare-ms .compare-head{color:#E30613;}
+.compare-row{padding:4px 0;border-bottom:1px solid #E2E0DA;}
+.compare-row:last-child{border-bottom:none;}
+.compare-lbl{font-size:10px;color:#9A9794;margin-bottom:1px;}
+.compare-val{font-size:12px;color:#1A1918;line-height:1.5;}
+
+</style>
+</head>
+<body>
+<div class="shell">
+<nav class="sb">
+  <div class="sb-head">
+    <div class="sb-logo">
+      <div class="sb-logo-icon">
+        <svg viewBox="0 0 20 20"><path d="M10 2L2 7.5V18h16V7.5L10 2zm0 2.8l6 4V16H4V8.8l6-4zM8 10h4v5H8z"/></svg>
+      </div>
+      <div>
+        <div class="sb-title">FFP Rehberi 2026</div>
+        <div class="sb-sub">Miles&amp;Smiles Program Yonetimi</div>
+      </div>
+    </div>
+    <div class="sb-ms-note">M&amp;S: On Point #15 &middot; $5.1 Milyar &middot; 2023'den +%94 artis</div>
+    <div class="sb-search">
+      <input type="text" id="srch" placeholder="Program ara..." oninput="filterProgs(this.value)">
+    </div>
+  </div>
+  <div class="nav-tabs">
+    <button class="nav-tab active" id="tab-list" onclick="switchTab('list')">Programlar</button>
+    <button class="nav-tab" id="tab-compare" onclick="switchTab('compare')">Karsilastir</button>
+  </div>
+  <div id="panel-list" class="sb-list">
+    <div class="sb-sec">Top 15 · On Point Loyalty 2026</div>
+    <div id="prog-list"></div>
+  </div>
+  <div id="panel-compare" style="display:none;" class="sb-list">
+    <div class="sb-sec">2 veya 3 program sec</div>
+    <div class="cc-wrap"><div id="cc-list"></div></div>
+    <div class="cc-count" id="cc-count"></div>
+    <button class="cc-btn" onclick="runCompare()">Karsilastir &rarr;</button>
+  </div>
+  <div class="sb-foot">On Point Loyalty 2026 &middot; LoyaltyLobby &middot; TPG &middot; Haziran 2026</div>
+</nav>
+<main class="main">
+  <div id="welcome" class="welcome">
+    <div class="welcome-ey">Miles&amp;Smiles Program Yonetimi</div>
+    <h1>FFP Istihbarat Rehberi 2026</h1>
+    <p>On Point Loyalty 2026 verilerine dayanan 15 global FFP programinin derinlemesine analizi. Sol menudan programa tikla, tier detaylari, kampanyalar ve marka degeri degerlemelerini incele.</p>
+    <div class="wstats">
+      <div class="wstat"><div class="wstat-n">15</div><div class="wstat-l">Analiz Edilen Program</div></div>
+      <div class="wstat"><div class="wstat-n">$31.8B</div><div class="wstat-l">En Yuksek Deger (SkyMiles)</div></div>
+      <div class="wstat"><div class="wstat-n">#15</div><div class="wstat-l">Miles&amp;Smiles ($5.1B)</div></div>
+    </div>
+  </div>
+  <div id="prog-view" style="display:none;"></div>
+  <div id="compare-view" style="display:none;"></div>
+</main>
+</div>
+
+<script>
+/* <![CDATA[ */
+var DATA=[
+{rank:1,id:"skymiles",airline:"Delta Air Lines",program:"SkyMiles",region:"ABD",alliance:"SkyTeam",color:"#1a5fad",members:"~110 milyon",founded:1981,model:"Harcama bazli (MQD)",
+summary:"Delta'nin SkyMiles programi 1981'de kuruldu ve dunyada en fazla uyeye sahip programlardan biri. 2024'ten itibaren statu tamamen Medallion Qualifying Dollar (MQD) sistemine gecmis olup uculan mesafe artik hicbir sekilde statusu etkilemiyor. American Express ile cok guclu co-brand kart ekosistemi var. SkyTeam ittifaki uyesi.",
+tiers:[
+  {name:"Silver Medallion",req:"5.000 MQD / yil",perks:"1 ucretsiz bagaj, Grup 1 binis, koltuk yukseltme listesi, SkyTeam Elite"},
+  {name:"Gold Medallion",req:"10.000 MQD / yil",perks:"2 ucretsiz bagaj, Sky Club misafir erisimi, degisiklik ucreti muafiyeti, SkyTeam Elite Plus"},
+  {name:"Platinum Medallion",req:"15.000 MQD / yil",perks:"3 ucretsiz bagaj, Choice Benefits (yillik secim odulu), Companion Certificate, upgrade onceligi"},
+  {name:"Diamond Medallion",req:"28.000 MQD / yil",perks:"Sinirsiz Sky Club, 360 Concierge, Global Companion Certificate, en yuksek upgrade onceligi"}
+],
+earning:"Harcama bazli: 1 dolar basina 5 mil (temel uye). Kart sahipleri ek mil kazaniyor. Delta One Business Class bilet New York - Istanbul yaklasik 300.000 mil. Mil degeri yaklasik 1,2 sent. Miler hic expire olmuyor, kara liste yok.",
+news:[{date:"Haziran 2026",text:"Delta ve Amex 30. yil ortakligini kutluyor: 4 Haziran 2026 itibaриyla yeni kart uyelerine arttirilmis bonus teklifleri basladi. Gold kart 90.000, Platinum 100.000, Reserve 125.000 mil giris bonusu sunuyor (15 Temmuz 2026'ya kadar)."},{date:"Haziran 2025 - Aralik 2025",text:"Hawaiian Airlines ortakligi 30 Haziran 2025'te tamamen sona erdi. Hawaiian uzerinden SkyMiles kazanimi ve odul rezervasyonu kapandi. MQD esikleri 2026 ve 2027 icin donduruldu — musteri baskisi sonucu artis yapilmadi."},{date:"Subat 2026",text:"Choice Benefits 2026 guncellendi: Platinum ve Diamond icin seyahat ve otel kredileri arttirildi. TakeOff15 avantaji genisletildi: Delta Amex kart sahipleri (Gold, Platinum, Reserve) tum odul ucuslarda otomatik yuzde 15 indirim aliyor."},{date:"Ocak 2026",text:"MQD esikleri 2026 icin sabit tutuldu. 2024 musteri isyani sonrasi indirilen esikler 2026 ve 2027 boyunca degismeyecek: Silver 5.000, Gold 10.000, Platinum 15.000, Diamond 28.000 MQD."}],
+compare:[
+  {lbl:"Kazanim modeli",target:"Harcama bazli (MQD). Mesafe hic sayilmiyor.",ms:"Mesafe bazli. Az harcayan ama cok ucан uye kayipla cikmaz."},
+  {lbl:"Statu esikleri",target:"5K-28K MQD. Kart harcamasiyla hizlandirilebilir.",ms:"Segment + mil kombinasyonu. Kart harcamasi statusu etkilemiyor."},
+  {lbl:"Co-brand kart",target:"Amex ile cok guclu portfoy. Kart harcamasi MQD sayiliyor.",ms:"Turkiye'de genis banka agi. Uluslararasi kart yok."},
+  {lbl:"Odul bilet",target:"Dinamik fiyat, kara liste yok. Esneklik yuksek.",ms:"Goreceli stabil fiyat."},
+  {lbl:"Mil degeri",target:"Yaklasik 1,2 sent. Miler expire etmiyor.",ms:"Yaklasik 0,8-1,0 sent."},
+  {lbl:"Lounge",target:"Sky Club - kart sahiplerine bile sinirli erisim sorunu.",ms:"THY Lounge Turkiye ve secili noktalarda."}
+],
+insights:[
+  {bold:"MQD modelini degil hibriti benimse.",text:" Delta'nin tamamen harcama bazina gecmesi tepki cekti. M&S mesafe + harcama hibrit modeli kurabilir: hem sadik ucucu hem buyuk harcamaci odulendirilir."},
+  {bold:"Miles expire politikasi rekabet avantaji.",text:" Delta'nin 'miles never expire' politikasi uye tutmada cok etkili. M&S'nin mevcut son islem bazli expiry politikasini sadeletirmek uye memnuniyetini arttirir."},
+  {bold:"Choice Benefits modeli adapte edilmeli.",text:" Platinum/Diamond uyelere yillik secim odulu sunmak (upgrade kupon / bonus mil / partner odulu) M&S'in ust segment uyelere ozel deger algisini guclendirir."}
+]},
+{rank:2,id:"aadvantage",airline:"American Airlines",program:"AAdvantage",region:"ABD",alliance:"Oneworld",color:"#0d2240",members:"~115 milyon",founded:1981,model:"Harcama bazli (EQD+EQM)",
+summary:"Dunyanin en buyuk FFP'lerinden biri. 1981'de kurulan AAdvantage hem Citi hem Barclays ile co-brand kart portfoyune sahip. Oneworld uyesi. Japan Airlines, Cathay Pacific, Qantas gibi premium havayollarina erisim sagliyor. Son yillarda program giderek kart harcamasina yoneldi.",
+tiers:[
+  {name:"Gold",req:"30 EQS + 25K EQM veya 30K EQD",perks:"1 ucretsiz bagaj, oncelikli binis, koltuk yukseltme, Oneworld Ruby"},
+  {name:"Platinum",req:"50 EQS + 50K EQM veya 50K EQD",perks:"2 ucretsiz bagaj, 500 mil bonus her ucus, upgrade kuponlari, Oneworld Sapphire"},
+  {name:"Platinum Pro",req:"75 EQS + 75K EQM veya 75K EQD",perks:"3 ucretsiz bagaj, daha fazla upgrade kuponu, Oneworld Emerald lounge"},
+  {name:"Executive Platinum",req:"100 EQS + 100K EQM veya 100K EQD",perks:"Maksimum upgrade onceligi, sinirsiz companion upgrade, Oneworld Emerald"}
+],
+earning:"Harcama bazli: 1 dolar basina 5 mil. Executive Platinum 11 mil/dolar. Transatlantik Business Class yaklasik 150.000 mil. Mil degeri yaklasik 1,5 sent.",
+news:[{date:"Haziran 2026",text:"Citi AAdvantage Globe kart kampanyasi: Haziran 2026'da yeni kart uyelerine 90.000 bonus mil (4 ay icinde 5.000 dolar harcama). Programin kamuya acik en yuksek bonusu. TPG Haziran 2026 degerlendirmesine gore AAdvantage mili 1,6 sent — ABD'nin en degerli program parasi."},{date:"Nisan 2026",text:"Barclays kart gecisi tamamlandi: 24 Nisan 2026 itibaриyla Citi, AAdvantage kartlarinin tek ihracatcisi oldu. Mevcut Barclays kart sahiplerinin karti Citi'ye otomatik aktariliyor. Barclays Aviator kart basvurulari kapandi."},{date:"Mart 2026",text:"Loyalty Point Rewards 2026 guncellendi: 1 Mart 2026'dan itibaren 100.000 LP seviyesindeki yuzde 30 bonus kaldirildi, yerine AA Vacations kredisi ve secili oduller getirildi. 175.000 LP esiginde 250 dolar AA Vacations kredisi secenegi eklendi."},{date:"Aralik 2025",text:"AAdvantage mil satisi: yuzde 40 bonus ile mil satin alma kampanyasi duzenlendi. Basic Economy farelerinde artik mil kazanilmiyor (17 Aralik 2025'ten itibaren) — hem Loyalty Point hem de ucus mili etkilendi."}],
+compare:[
+  {lbl:"Kazanim modeli",target:"3 farkli sart (EQS+EQM+EQD) ayni anda karsilanmali - karmasik.",ms:"Daha basit: segment + mil ikili esigi."},
+  {lbl:"Co-brand kart",target:"Citi + Barclays cift issuer - genis portfoy.",ms:"Turkiye'de coklu banka ortakligi var."},
+  {lbl:"Oneworld avantaji",target:"JAL, Cathay, Qantas premium erisimi cok degerli.",ms:"Star Alliance - United, Lufthansa, Singapore erisimi."},
+  {lbl:"Mil degeri",target:"Yaklasik 1,5 sent - ABD'nin en degerli programlarindan.",ms:"Yaklasik 0,8-1,0 sent."},
+  {lbl:"Odul bilet",target:"Dinamik fiyat. Partner biletle iyi sweet spot'lar var.",ms:"Goreceli stabil fiyat."},
+  {lbl:"Statu karmasikligi",target:"Cok sartli sistem uyeleri zorluyor.",ms:"Goreceli daha sade yapi."}
+],
+insights:[
+  {bold:"Cift issuer modeli arastirilmali.",text:" AAdvantage'in hem Citi hem Barclays ile calismasi farkli musteri segmentlerine ulasmasi sagliyor. M&S'nin tek banka bagimliligini azaltmak kart penetrasyonunu arttirir."},
+  {bold:"Mil degeri algisi yonetilmeli.",text:" AAdvantage yaklasik 1,5 sent ile premium algi yaratiyor. M&S'in mil deger iletisimi guclendirilmeli."},
+  {bold:"Karmasiklik tuzagindan kacin.",text:" EQS+EQM+EQD uclu sart en cok elestirilen yon. M&S statu kazanimini sadeletirerek rakip avantaji elde edebilir."}
+]},
+{rank:3,id:"mileageplus",airline:"United Airlines",program:"MileagePlus",region:"ABD",alliance:"Star Alliance",color:"#005daa",members:"~100 milyon",founded:1981,model:"Harcama bazli (PQP+PQF)",
+summary:"Star Alliance'in en buyuk programlarindan biri. 2 Nisan 2026'da tarihin en buyuk revizyonunu gecirdi: kart sahibi olup olmamak kazanim oraninda yuzde 100 farka yol aciyor. Chase ile devasa kart ekosistemi var. PlusPoints sistemiyle upgrade mekanizmasi kapsamli.",
+tiers:[
+  {name:"Premier Silver",req:"15 PQF + 5.000 PQP veya 6.000 PQP",perks:"1 ucretsiz bagaj, Grup 2 binis, Star Alliance Silver"},
+  {name:"Premier Gold",req:"30 PQF + 10.000 PQP veya 12.000 PQP",perks:"2 ucretsiz bagaj, Star Alliance Gold (1.000+ lounge)"},
+  {name:"Premier Platinum",req:"45 PQF + 15.000 PQP veya 18.000 PQP",perks:"3 ucretsiz bagaj, 40 PlusPoint upgrade kredisi"},
+  {name:"Premier 1K",req:"60 PQF + 22.000 PQP veya 28.000 PQP",perks:"280 PlusPoint, 96 saat oncesinden upgrade, 17 mil/dolar (kart+1K)"}
+],
+earning:"Nisan 2026'dan itibaren dramatik degisim: kart sahibi olmayan uye Basic Economy'de sifir mil kazaniyor. Kart sahibi 3-6 mil/dolar. 1K + kart 17 mil/dolar. Mil degeri yaklasik 1,35 sent. Kart sahiplerine yuzde 10-15 odul bilet indirimi.",
+news:[{date:"Haziran 2026",text:"Summer of You kampanyasi: Chase United kart sahiplerine 1 Mayis - 31 Agustos 2026 arasi harcamalar icin kisisellesmis bonus mil teklifleri. Kayit 31 Temmuz 2026'ya kadar. Otel puanlarindan MileagePlus'a yuzde 25 transfer bonusu (1 Haziran 2026)."},{date:"Nisan 2026",text:"Tarihin en buyuk MileagePlus revizyonu (2 Nisan 2026): Kart sahibi olmayan uye Basic Economy'de sifir mil kazaniyor. Kart sahiplerine odul biletlerde yuzde 10-15 indirim ve Polaris Saver envanteri acildi. Kart + 1K kombinasyonu 17 mil/dolar ile sektorun en yuksek kazanim oran."},{date:"Subat 2026",text:"Tum Premier uyeler artik odul biletlerinde de PlusPoint ve Complimentary Upgrade kullanabiliyor. Bu hak daha once sadece Global Services uyelerine acikti. Premier 1K uyeler kart harcamalarindan kazandiklari PQP'yi ek PlusPoint birikimine de saydirabiliyor."},{date:"Aralik 2025",text:"PlusPoint upgrade dinamik fiyatlamaya gecis duyuruldu: Subat 2027'den itibaren sabit upgrade tablosu kaldiriliyor, dinamik sisteme geciliyor. United 14 ay onceden duyuru yaparak seffafligi ornekledi."}],
+compare:[
+  {lbl:"Kazanim modeli",target:"Harcama bazli. Kart olmadan ciddi dezavantaj.",ms:"Mesafe bazli. Kart olmadan da kazanim makul."},
+  {lbl:"Co-brand kart",target:"Chase ile devasa ekosistem. Kart statusu etkiliyor.",ms:"Turkiye'de genis ama uluslararasi kart yok."},
+  {lbl:"Star Alliance",target:"44 havayolu erisimi + JetBlue ortakligi (2026).",ms:"Ayni ittifak - esit erisim."},
+  {lbl:"Odul bilet",target:"Dinamik + kart indirimi sistemi.",ms:"Daha stabil fiyat yapisi."},
+  {lbl:"Mil degeri",target:"Yaklasik 1,35 sent.",ms:"Yaklasik 0,8-1,0 sent."},
+  {lbl:"Upgrade",target:"PlusPoint sistemi guclu ama 2027'de devalue olacak.",ms:"Upgrade sistemi daha basit."}
+],
+insights:[
+  {bold:"Kart + ucus entegrasyonu modeli uygulanabilir.",text:" United'in kart sahibine yuzde 10-15 odul indirimi vermesi ve ozel Saver envanteri acmasi M&S icin dogrudan uygulanabilir."},
+  {bold:"Devaluasyonu seffaf ve onceden duyur.",text:" United PlusPoint dinamik fiyatlamayi 14 ay onceden duyurdu. Bu M&S icin bir politika haline gelmeli."},
+  {bold:"Kart olmadan da deger sun.",text:" United'in non-cardholder'lari cezalandirmasi tepki yaratti. M&S her uye segmentine temel deger sunmali."}
+]},
+{rank:4,id:"skywards",airline:"Emirates",program:"Skywards",region:"Korfez/Global",alliance:"Bagimsiz",color:"#c8102e",members:"~30 milyon",founded:1992,model:"Mesafe + kabin bazli",
+summary:"Emirates'in bagimsiz programi. Herhangi bir havayolu ittifakina uye degil. Premium segment odakli, First Class ve Business Class odullerle taniniyor. Dubai Hub merkezli. Mayis 2025'ten itibaren First Class award rezervasyonu yalnizca Skywards elite uyelerine acik.",
+tiers:[
+  {name:"Blue (Temel)",req:"Kayit ile",perks:"Temel mil kazanimi, online check-in"},
+  {name:"Silver",req:"25.000 Tier Miles / 12 ay",perks:"Yuzde 25 bonus mil, oncelikli binis, ucretsiz koltuk secimi"},
+  {name:"Gold",req:"50.000 Tier Miles / 12 ay",perks:"Yuzde 50 bonus mil, Emirates lounge, 1 ucretsiz bagaj ekstra"},
+  {name:"Platinum",req:"150.000 Tier Miles / 12 ay",perks:"Yuzde 100 bonus mil, First Class lounge, ozel concierge, en yuksek upgrade onceligi"}
+],
+earning:"Mesafe + kabin bazli. Economy yuzde 25-75 mile kazanimi. Business yuzde 100, First yuzde 150. Mil degeri yaklasik 1,0-1,2 sent. Odul bileti Dubai-Londra Business sinifi yaklasik 75.000 mil.",
+news:[{date:"Haziran 2026",text:"Emirates 20 yuzde bonus tier miles kampanyasi: Emirates ve Flydubai ile yapilan ucuslarda 31 Agustos 2026'ya kadar yuzde 20 bonus Tier Miles kazanimi. Korfez krizi sonrasi uye bagliligi koruma kampanyasi."},{date:"Mayis 2026",text:"Award fiyat artisi: 20 Mayis 2026 itibaриyla First, Business ve Premium Economy Classic Reward maliyetleri arttirildi. Upgrade Rewards da pahalilasti. Ayni donemde yuzde 50 bonus ile mil satin alma kampanyasi duzenlendi (31 Mayis'a kadar, 2 sent/mil)."},{date:"Mart 2026",text:"Korfez krizi uye koruma paketi: Silver, Gold ve Platinum tier'lar 30 Haziran 2026'ya kadar uzatildi. Mart-Mayis arasi expire olacak miler 30 Haziran 2026'ya kadar kullanilabiliyor. Ucus iptallerinden etkilenen upgrade kuponu gecerlilik sureleri de uzatildi."},{date:"Mayis 2025",text:"First Class award kisitlamasi: Emirates First Class odul bileti rezervasyonu artik sadece Skywards Silver, Gold ve Platinum uyelerine acik. Standart uyelerin First Class'a miles ile erisimi tamamen kapandi. Chase Ultimate Rewards, Skywards'i transfer partner listesinden cikardi (Agustos 2025)."}],
+compare:[
+  {lbl:"Kazanim modeli",target:"Mesafe + kabin. M&S ile benzer yapi.",ms:"Mesafe + kabin. Yapisal benzerlik yuksek."},
+  {lbl:"Ittifak",target:"Bagimsiz. Yalnizca Flydubai ve secili partnerler.",ms:"Star Alliance - 44 havayolu erisimi."},
+  {lbl:"Premium erisim",target:"First Class lounge erisimi Platinum'a kadar var.",ms:"THY Lounge erisimi ust kademelerde."},
+  {lbl:"Co-brand kart",target:"Uluslararasi Amex ortakligi var.",ms:"Turkiye'de yerel bankalar."},
+  {lbl:"Mil degeri",target:"Yaklasik 1,0-1,2 sent.",ms:"Yaklasik 0,8-1,0 sent."},
+  {lbl:"First Class",target:"Award rezervasyonu artik sadece elite uyelere.",ms:"THY Business award erisimi goreceli acik."}
+],
+insights:[
+  {bold:"Elite-only premium envanter modeli dusunulmeli.",text:" Emirates First Class award'ini yalnizca elite uyelere acmasi premium uye sadakatini artiriyor. M&S Business award'larinda en iyi koltuklar ust statu uyelere oncelikli sunulabilir."},
+  {bold:"Bagimsiz program guclu marka gerektiriyor.",text:" Emirates ittifak olmadan buyudu cunku marka gucu cok yuksek. M&S icin ittifak korunmali, ittifak disi ortakliklar ek katman olabilir."},
+  {bold:"Kriz doneminde tier uzatma iletisimi ornek alinmali.",text:" Emirates kriz doneminde tier ve miles gecerlilik surelerini proaktif uzatti. M&S bu modeli kriz iletisim protokolune entegre edebilir."}
+]},
+{rank:5,id:"privilege",airline:"Qatar Airways",program:"Privilege Club",region:"Korfez/Global",alliance:"Oneworld",color:"#6d0e37",members:"~20 milyon",founded:2003,model:"Avios + Qpoints bazli",
+summary:"Qatar Airways'in Privilege Club programi 2023'te tamamen yenilendi: Avios para birimi benimsendi, Oneworld'e katildi. Qsuite ile premium segment liderliginde. Avios sistemi sayesinde British Airways, Iberia, Finnair ile capraz harcama ve yakma mumkun.",
+tiers:[
+  {name:"Burgundy (Temel)",req:"Kayit ile",perks:"Temel Avios kazanimi"},
+  {name:"Silver",req:"150 Qpoints veya 15.000 Tier Avios",perks:"Oncelikli binis, ucretsiz koltuk secimi, Oneworld Ruby"},
+  {name:"Gold",req:"300 Qpoints veya 30.000 Tier Avios",perks:"Qatar Airways Lounge, 1 ekstra bagaj, Oneworld Sapphire"},
+  {name:"Platinum",req:"700 Qpoints veya 70.000 Tier Avios",perks:"Al Mourjan Lounge (First Class), ozel concierge, Oneworld Emerald"}
+],
+earning:"Avios para birimi. Economy yuzde 25-100. Business Qsuite yuzde 150. Avios diger programlarla 1:1 transfer edilebilir. Mil degeri yaklasik 1,6 sent.",
+news:[{date:"Haziran 2026",text:"Yeni uye kampanyasi suruyor: JOINPC26 koduyla kaydolan yeni uyeler ilk ucus harcamalari sonrasi 2.000 bonus Avios kazaniyor. Qatar Privilege Club tier uzatma politikasi 1 Haziran 2026'dan itibaren guncellendi — yuzde 90 Qpoints esigine ulasanlar 12 ay uzatim aliyor."},{date:"Nisan 2026",text:"Cift Qpoints kampanyasi: 16-22 Nisan arasi rezervasyon, 16 Nisan - 16 Haziran 2026 arasi seyahatte Qatar ucuslarinda 2X Qpoints kampanyasi yurutuldu. Avios satin alma kampanyasi: yuzde 50 bonus ile 1,53 sent/Avios fiyatina mal oldu (Mayis 2026)."},{date:"Mart 2026",text:"Korfez krizi tier koruma: Subat-Mayis 2026 arasi expire olacak Privilege Club tierlar 3 ay uzatildi. Etihad, status esiklerini yuzde 25 indirerek (31 Mart 2027'ye kadar) Qatar'a gore daha cazip bir konum elde etti."},{date:"2023-2024",text:"Program kokten yenilendi: Avios para birimine gecildi, Oneworld'e katilindi. Qmiles tamamen tarihe karisti. Capital One (Eylul 2025), Qatar Privilege Club'i transfer partner olarak ekledi — ABD pazar erisimi guclendi."}],
+compare:[
+  {lbl:"Para birimi",target:"Avios - BA, Iberia, Finnair ile capraz kullanim. Cok esnek.",ms:"Miles&Smiles Mil - yalnizca M&S ekosisteminde gecerli."},
+  {lbl:"Ittifak",target:"Oneworld - JAL, Cathay, BA, Qantas erisimi.",ms:"Star Alliance - 44 havayolu erisimi."},
+  {lbl:"Qsuite premium",target:"Dunyanin en odullu Business Class. Award degeri cok yuksek.",ms:"THY Business kaliteli ama Qsuite algisi yok."},
+  {lbl:"Co-brand kart",target:"Cardless ile ABD karti, yeni pazar erisimi.",ms:"Turkiye'de mevcut. Global pazarda yok."},
+  {lbl:"Mil degeri",target:"Yaklasik 1,6 sent (Avios genel degeri).",ms:"Yaklasik 0,8-1,0 sent."},
+  {lbl:"Program tazesi",target:"2023'te yenilenmi, taze ve hizli buyuyor.",ms:"Koklu ama yenilenme ihtiyaci var."}
+],
+insights:[
+  {bold:"Para birimi esnekligi guclu baglilik yaratiyor.",text:" Qatar'in Avios'a gecisi uyelerin millerini baska programlarla birlestirmesine izin veriyor. M&S'nin ittifak ici capraz kullanim secenegi gelistirmesi deger algisini arttirir."},
+  {bold:"Urun kalitesi ile program degerini iliskilendir.",text:" Qatar Qsuite award rezervasyonunu program avantaji olarak one cikariyor. M&S de THY Business Class'ini program iletisiminde daha etkili kullanabilir."},
+  {bold:"Buyuk revizyon cesaret ister ama gerekir.",text:" Privilege Club'in koklu revizyonu ornek gosterilen benchmark haline geldi. M&S'in uzun vadeli program mimarisini yenilemesi gerekebilir."}
+]},
+{rank:6,id:"flyingblue",airline:"Air France-KLM",program:"Flying Blue",region:"Avrupa",alliance:"SkyTeam",color:"#0a3e7a",members:"~17 milyon",founded:2005,model:"Harcama bazli (XP)",
+summary:"Air France ve KLM'in ortak programi. 2018'de harcama bazli sisteme gecildi. XP (Experience Points) ile statu kazaniliyor. SkyTeam uyesi. Amex Membership Rewards dahil bircok kart programindan transfer mumkun. Promo Awards ile aylik indirimli bilet kampanyalari populer.",
+tiers:[
+  {name:"Explorer (Temel)",req:"Kayit ile",perks:"Temel mil kazanimi"},
+  {name:"Silver",req:"100 XP / 12 ay",perks:"Yuzde 25 bonus mil, koltuk secimi, SkyTeam Elite"},
+  {name:"Gold",req:"200 XP / 12 ay",perks:"Yuzde 50 bonus mil, lounge erisimi, ekstra bagaj, SkyTeam Elite Plus"},
+  {name:"Platinum",req:"400 XP / 12 ay",perks:"Yuzde 75 bonus mil, First Class lounge, ozel hat, upgrade onceligi"}
+],
+earning:"Harcama bazli. 1 Euro basina 4-12 mil. Business sinifi 1 Euro = 8 mil. Paris-Istanbul Business award yaklasik 60.000 mil. Mil degeri yaklasik 1,5 sent. Aylik Promo Awards kampanyalari ile secili destinasyonlara buyuk indirimli biletler.",
+news:[{date:"Mayis 2026",text:"Flying Blue 80 yuzde bonus ile mil satin alma kampanyasi duzenlendi (31 Mayis 2026'ya kadar, minimum 50.000 mil). Ayni donemde 2026 tarihli Delta ucuslari Flying Blue uzerinden SkyMiles'a kiyasla yuzde 20-33 daha ucuz fiyatlandiriliyor — onemli sweet spot."},{date:"Ocak 2026",text:"Flying Blue Extra aboneligi lansmani: Ucret karsiligi elite benzeri avantajlar — bonus XP, Promo Awards oncelikli erisim, lounge kredisi. Ucus yapmadan statu avantaji elde etme imkani."},{date:"2025-2026",text:"Aylik Promo Awards kampanyalari devam ediyor: Her ay 10-20 destinasyona yuzde 25-50 indirimli odul bileti. Air France-KLM Flying Blue, Point.me'nin 22 milyon arama analizinde 2025'in en iyi programi secildi (92,38 puan)."},{date:"2024",text:"XP kazanim sartlarinda kucuk degisiklikler: Partner harcamalari XP olarak daha az sayilmaya baslandi. Amex Membership Rewards transferi guclu kalmaya devam ediyor."}],
+compare:[
+  {lbl:"Kazanim modeli",target:"Harcama bazli (XP). Ucus + kart harcamasi kombine.",ms:"Mesafe bazli. Harcama statusu etkilemiyor."},
+  {lbl:"Promo Awards",target:"Aylik flash indirimli bilet kampanyalari - M&S'de yok.",ms:"Donemsel kampanyalar var ama sistematik degil."},
+  {lbl:"Transfer partnerleri",target:"Amex MR, Chase, Citi'den transfer var.",ms:"Transfer ortakligi cok sinirli."},
+  {lbl:"SkyTeam",target:"18 havayolu erisimi.",ms:"Star Alliance - 44 havayolu."},
+  {lbl:"Mil degeri",target:"Yaklasik 1,5 sent.",ms:"Yaklasik 0,8-1,0 sent."},
+  {lbl:"Kampanya kulturu",target:"Promo Awards uye aktivasyonu icin guclu arac.",ms:"Kampanya yapisi var, dijitalde daha guclu olabilir."}
+],
+insights:[
+  {bold:"Aylik Promo Awards modeli uygulanmali.",text:" Flying Blue'nun her ay belirli destinasyonlara yuzde 50 indirimli bilet sunmasi uye aktivasyonunu sistematik kiliyor. M&S'nin Mil Pusulasi konsepti bu modele yakin - daha duzenli hale getirilmeli."},
+  {bold:"Transfer ekosistemi genisletilmeli.",text:" Flying Blue'nun Amex MR, Chase ve Citi ile transfer anlasmalari var. M&S bu yonde adim atarsa kuresel uye tabani buyur."},
+  {bold:"Cift havayolu programi verimlilik sagliyor.",text:" AF-KLM'in iki havayolunu tek programda birlestirmesi maliyet avantaji ve daha genis kapsama yaratiyor."}
+]},
+{rank:7,id:"krisflyer",airline:"Singapore Airlines",program:"KrisFlyer",region:"Asya-Pasifik",alliance:"Star Alliance",color:"#0033a0",members:"~5 milyon",founded:1999,model:"Mesafe + kabin bazli",
+summary:"Asya'nin prestij programi. Singapore Airlines'in odunsuz kalite anlayisi programa da yansiyor. PPS Club (yuksek harcama bazli) ve KrisFlyer Elite olmak uzere iki ayri statu kanali var. Star Alliance uyesi. First ve Suites Class award bileti arayan uyelerin oncelikli tercihi.",
+tiers:[
+  {name:"KrisFlyer (Temel)",req:"Kayit ile",perks:"Temel mil kazanimi"},
+  {name:"Elite Silver",req:"25.000 Elite Miles / 12 ay",perks:"Yuzde 25 bonus mil, oncelikli binis, Star Alliance Silver"},
+  {name:"Elite Gold",req:"50.000 Elite Miles / 12 ay",perks:"Yuzde 50 bonus mil, SilverKris Lounge, Star Alliance Gold"},
+  {name:"PPS Club",req:"SQ'da 25.000 dolar harcama / yil",perks:"En yuksek oncelik, First Class lounge her zaman, ozel servis"}
+],
+earning:"Mesafe + kabin bazli. Economy yuzde 25-100. Business yuzde 100, First/Suites yuzde 150. Singapur-Istanbul Business award yaklasik 58.000 mil. Mil degeri yaklasik 1,1 sent. Kasim 2025'te premium kabin award fiyatlari artirildi.",
+news:[{date:"Haziran 2026",text:"Amex Membership Rewards'tan KrisFlyer'a yuzde 15 transfer bonusu (15 Haziran 2026'ya kadar). ITA Airways Star Alliance'a katilmasiyla KrisFlyer uyelerine Roma guzergahlari acildi — Avrupa baglantisi guclendi."},{date:"Kasim 2025",text:"Award fiyat guncellendi: Premium kabinlerde yuzde 10-15 artis. ABD-Singapur Business Class eski fiyata gore pahalilasti. HSBC Singapore, KrisFlyer transfer oranini yuzde 20 kotulestirdi (tek banka bu degisikligi yapti; Amex, Citi, DBS 1:1 oranini koruyor)."},{date:"2025",text:"Asya-Pasifik kisa hat konaklamalarinda partner kampanyalar: Concorde Hotel Singapur (2X mil, tum 2026), Casa del Mar Langkawi (1.000 bonus mil + yuzde 10 indirim, Aralik 2026'ya kadar), Hard Rock Hotel Bali (3X mil, Ocak-Mart 2026). Star Alliance'a ITA Airways eklendi."}],
+compare:[
+  {lbl:"Kazanim modeli",target:"Mesafe + kabin. M&S ile benzer yapi.",ms:"Mesafe + kabin. Yapisal benzerlik yuksek."},
+  {lbl:"Star Alliance",target:"44 havayolu. ITA Airways yeni eklendi.",ms:"Ayni ittifak. Esit erisim."},
+  {lbl:"Premium kabin",target:"Suites - dunyanin en iyi First Class'i. Award degeri cok yuksek.",ms:"THY Business kaliteli ama SQ algisi yok."},
+  {lbl:"Mil degeri",target:"Yaklasik 1,1 sent. Kasim 2025'te award degeri dustu.",ms:"Yaklasik 0,8-1,0 sent."},
+  {lbl:"PPS Club",target:"Harcama bazli ust segment - yuksek deger.",ms:"Elite Plus en ust kademe. Harcama sarti yok."},
+  {lbl:"Transfer partner",target:"Amex, Chase, Citi'den transfer var.",ms:"Cok sinirli."}
+],
+insights:[
+  {bold:"Mesafe bazli model iyi yonetilirse rekabetci.",text:" KrisFlyer ve M&S benzer kazanim modeline sahip. M&S'in avantaji: mesafe bazli model daha seffaf ve adil algilaniyor. Bu iletisimi guclendir."},
+  {bold:"Off-peak award kulturu olusturulmali.",text:" KrisFlyer'da off-peak rezervasyonlar cok daha uygun. M&S benzer bir erken rezervasyon = daha az mil modeliyle odul bilet erisimini artirabilir."},
+  {bold:"Premium kabin award erisimi marka degeri tasiyor.",text:" Singapore Suites'e KrisFlyer ile ulasmak programin en guclu cekimi. M&S THY Business award erisimini on plana cikararak benzer bir cazibe yaratabilir."}
+]},
+{rank:8,id:"aeroplan",airline:"Air Canada",program:"Aeroplan",region:"Kuzey Amerika",alliance:"Star Alliance",color:"#d01f24",members:"~8 milyon",founded:1984,model:"Harcama bazli (SQD+SQM)",
+summary:"2020'de yenilenen Aeroplan, sektorun en begenulen program revizyonlarindan biri. Sabit award chart korundu - diger buyuk ABD programlari dinamige gecerken Aeroplan'in tahmin edilebilir fiyatlari buyuk rekabet avantaji. TD, CIBC, Amex Canada ile guclu kart agi.",
+tiers:[
+  {name:"25K",req:"25.000 SQM + 3.000 dolar SQD veya 5.000 dolar SQD",perks:"Oncelikli binis, koltuk secimi, Star Alliance Silver"},
+  {name:"35K",req:"35.000 SQM + 5.000 dolar SQD veya 7.000 dolar SQD",perks:"Lounge erisimi, 2 ekstra bagaj, Star Alliance Gold"},
+  {name:"50K",req:"50.000 SQM + 7.500 dolar SQD veya 10.000 dolar SQD",perks:"Daha fazla upgrade hakki, complimentary upgrade listesi"},
+  {name:"75K / Super Elite",req:"75.000 SQM + 10.000 dolar SQD",perks:"Maksimum upgrade, Maple Leaf Lounge her zaman, ozel destek"}
+],
+earning:"Harcama bazli. SQD: 1 dolar = 1 SQD. Ucuslarda 1 dolar = 1-1,5 Aeroplan puani. Award chart sabit: Toronto-Londra Business 75.000 puan. Puan degeri yaklasik 1,5-1,8 sent.",
+news:[{date:"Haziran 2026",text:"Devaluasyon yururluge girdi (1 Haziran 2026): Kuzey Amerika-Avrupa Business Class 70.000'den 75.000'e, uzun mesafe Business (7.501-11.000 mil) 87.500'den 102.500'e yukseldi. Uzun mesafe First Class 100.000'den 120.000'e cikti. Aeroplan'in 6 yilda ilk buyuk devaluasyonu — ancak aylar onceden duyuruldu."},{date:"Mayis 2026",text:"Rove Miles yeni transfer partner olarak eklendi: 6 Haziran 2026'ya kadar yuzde 25 transfer bonusu (1.000 Rove = 1.250 Aeroplan puani). ITA Airways Star Alliance'a katilmasiyla Aeroplan uyeleri artik ITA uzerinden Roma'ya award rezervasyonu yapabiliyor."},{date:"Nisan 2026",text:"Devaluasyon duyurusu: Aeroplan degisiklikleri aylar once ve resmi olarak duyurdu — 'maliyetlerimiz arttigi icin bunu yapmak zorundayiz' mesajiyla tam seffaflik ornegi gosterildi. Analistler 'yanlis devaluasyon degil dogru iletisim' yorumunu yapti."},{date:"2024-2025",text:"Sabit award chart korunmaya devam etti: Rakipler dinamige gecerken Aeroplan stabil yapida kaldi. Fuel surcharge uygulamama politikasi devam ediyor — Star Alliance'in en rekabetci award degeri olma ozelligi surdu."}],
+compare:[
+  {lbl:"Award chart",target:"SABIT fiyat! Buyuk rekabet avantaji - tahmin edilebilir.",ms:"Goreceli stabil ama dinamik baski artiyor."},
+  {lbl:"Mil degeri",target:"Yaklasik 1,5-1,8 sent - sektorun en yuksegi.",ms:"Yaklasik 0,8-1,0 sent. Buyuk fark."},
+  {lbl:"Star Alliance",target:"Ayni ittifak. ITA Airways yeni eklendi.",ms:"Ayni ittifak."},
+  {lbl:"Kart ekosistemi",target:"TD, CIBC, Amex Canada - cok guclu Kanada pazari.",ms:"Turkiye'de guclu ama global yok."},
+  {lbl:"Program tazesi",target:"2020 revizyonu ornek gosterilen benchmark.",ms:"Revizyon ihtiyaci var."},
+  {lbl:"Bolgesel guc",target:"Kuzey Amerika ve Pasifik odakli.",ms:"Avrupa ve Orta Dogu odakli."}
+],
+insights:[
+  {bold:"Sabit award chart M&S icin guclu silah olabilir.",text:" Aeroplan dinamige gecmedi ve buyuk itibar kazaniyor. M&S stabil fiyat politikasini acikca bir marka degeri olarak ilan ederse rakiplerden one gecer."},
+  {bold:"Program revizyonu itibar kazandirir.",text:" Aeroplan'in 2020 revizyonu hala referans gosteriliyor. M&S kapsamli bir yenilenme yaptiginda net iletisimle desteklerse uzun vadeli kazanc buyuk olur."},
+  {bold:"Puan degerini gorunur kil.",text:" Aeroplan uyeleri millerinin ne kadara degdigini cok iyi biliyor - program bu iletisimi cok iyi yapiyor. M&S ayni netlikte deger iletisimi kurmali."}
+]},
+{rank:9,id:"avios",airline:"British Airways / IAG",program:"Avios (BA Executive Club)",region:"Avrupa/Global",alliance:"Oneworld",color:"#2b5fb3",members:"~10 milyon",founded:1992,model:"Mesafe + kabin bazli",
+summary:"British Airways'in Avios para birimi artik IAG grubu genelinde (Qatar, Iberia, Finnair, Vueling, Aer Lingus) gecerli ve 1:1 transfer mumkun. Avrupa ici kisa hat biletlerde Avios degeri cok yuksek. Aralik 2025'te yuzde 10 devaluasyon geldi.",
+tiers:[
+  {name:"Blue (Temel)",req:"Kayit ile",perks:"Temel Avios kazanimi"},
+  {name:"Bronze",req:"300 Tier Points / yil",perks:"Yuzde 25 Avios bonusu, oncelikli binis"},
+  {name:"Silver",req:"600 Tier Points / yil",perks:"Yuzde 50 Avios bonusu, lounge erisimi, Oneworld Sapphire"},
+  {name:"Gold",req:"1.500 Tier Points / yil",perks:"Yuzde 100 Avios bonusu, First Lounge, Oneworld Emerald"}
+],
+earning:"Mesafe bazli. Economy yuzde 25-100 Avios/mil. Business yuzde 100-150 Avios/mil. Londra-Istanbul Economy yaklasik 1.800 Avios. Award bilet Londra-New York Economy 26.000 Avios (off-peak). Mil degeri yaklasik 1,5-2 sent (kisa hat'ta cok yuksek).",
+news:[{date:"Haziran 2026",text:"Chase'den BA, Iberia ve Aer Lingus'a yuzde 30 transfer bonusu aktif. Avios 5 programda (BA, Qatar, Iberia, Finnair, Aer Lingus) serbest 1:1 transfer ozelligi korunuyor. Bilt Rewards'tan Mayis 2026'da yuzde 100 transfer bonusu gerceklesti."},{date:"Aralik 2025",text:"Avios devaluasyonu (15 Aralik 2025): Tum rotalarda yuzde 8-14 Avios artisi. Uzun hat Business Class en cok etkilendi (Londra-Singapur 110.000'den 121.000'e). Kisa hat sweet spot'lar buyuk olcude korundu. BA, degisikligi onceden duyurdu ve eski fiyatlarla son rezervasyon suresi tanidi."},{date:"Aralik 2025",text:"BA Executive Club yeniden adlandirildi. Revenue bazli yeni statu kazanim sistemi devreye girdi: Tier Puanlar artik harcama miktarina gore hesaplaniyor. QantasLink kisa hat ucuslarinda Avios ile rezervasyon acildi."},{date:"2025",text:"Loganair, Logan Loyalty adli Avios programini baslatti. Oman Air Oneworld'e katildi — Avios ile Muscat'a yuzde 40 daha ucuz Business Class rezervasyon imkani dogdu."}],
+compare:[
+  {lbl:"Para birimi esnekligi",target:"Avios: BA, Qatar, Iberia, Finnair, Vueling arasi 1:1 transfer.",ms:"Miles - yalnizca M&S ekosisteminde gecerli."},
+  {lbl:"Kisa hat degeri",target:"Avrupa ici kisa hat Avios degeri cok yuksek.",ms:"THY ic hat award erisimi goreceli iyi."},
+  {lbl:"Uzun hat",target:"Aralik 2025 sonrasi uzun hat degeri azaldi.",ms:"Transatlantik icin daha rekabetci olabilir."},
+  {lbl:"Devaluasyon",target:"Yuzde 10 devaluasyon Aralik 2025'te geldi.",ms:"Son buyuk devaluasyon yok - stabil."},
+  {lbl:"Mil degeri",target:"Yaklasik 1,5-2 sent (kisa hat). Uzun hat daha dusuk.",ms:"Yaklasik 0,8-1,0 sent."},
+  {lbl:"IAG grubu",target:"Cok markali ittifak - capraz kullanim guclu.",ms:"THY tek marka odakli."}
+],
+insights:[
+  {bold:"Capraz program transferi stratejik deger tasiyor.",text:" Avios'un IAG grubu icinde serbestce dolasmasi uyeleri programda tutuyor. M&S'nin Star Alliance programlari arasinda ortak mil havuzu olusturmasi benzer bir cekim yaratir."},
+  {bold:"Kisa hat sweet spot iletisimi yapilmali.",text:" BA'nin Avrupa ici kisa hat Avios degeri uyelerce cok iyi biliniyor. M&S'nin Turkiye ic hat ve Balkan-Orta Dogu kisa hat award degerini one cikarmasi gerekiyor."},
+  {bold:"Devaluasyon oncesi seffaflik itibar korudu.",text:" BA devaluasyonu onceden duyurdu ve eski fiyatlarda rezervasyona izin verdi. Bu yaklasim M&S icin kesinlikle politika haline gelmeli."}
+]},
+{rank:10,id:"qff",airline:"Qantas",program:"Frequent Flyer",region:"Avustralya/Pasifik",alliance:"Oneworld",color:"#e21836",members:"~14 milyon",founded:1987,model:"Harcama bazli (Status Credits)",
+summary:"Avustralya'nin dominant programi. Ulke nufusunun yuzde 53'unden fazlasi uye. Woolworths gibi gunluk market ortakliklari ile milyonlarca Avustralyali ucus yapmadan Qantas Points biriktiriyor. Oneworld uyesi. Kredi ve partner ekosistemi son derece genis.",
+tiers:[
+  {name:"Bronze",req:"Kayit ile",perks:"Temel puan kazanimi"},
+  {name:"Silver",req:"300 Status Credits / yil",perks:"Oncelikli binis, koltuk secimi, Oneworld Ruby"},
+  {name:"Gold",req:"700 Status Credits / yil",perks:"Qantas Club Lounge, 2 ekstra bagaj, Oneworld Sapphire"},
+  {name:"Platinum",req:"1.400 Status Credits / yil",perks:"First Class Lounge, upgrade kuponlari, Oneworld Emerald"},
+  {name:"Platinum One",req:"3.600 Status Credits / yil",perks:"Davetiye ile. Ozel concierge, premium her sey."}
+],
+earning:"Harcama + mesafe hibrit. Market alisverisi, kredi karti, yakit, otel gibi partner harcamalari cok guclu. 1 Qantas Point yaklasik 1-1,5 sent degeri. Avustralya'dan Avrupa Business award yaklasik 90.000-120.000 Qantas Points.",
+news:[{date:"Haziran 2026",text:"Capital One'dan Qantas'a yuzde 20 transfer bonusu (1 Haziran 2026). Yeni Qantas 2026 program avantajlari: Silver uyelerine ekstra lounge davetiyesi, tum elite uyelerine Qantas Hotels, Holidays ve Wine'da indirim ve kuponlar."},{date:"Mart 2026",text:"Qantas 2027 hazirlik duyurulari: Points Club ve Green Tier 2026 sonu itibariyla kapatilacak. 2027'de sadelestirilmis statu yolu geliyor — ilk kez kazanmak ile yeniden kazanmak icin farkli esik uygulamasi kaldiriliyor."},{date:"Agustos 2025",text:"Award fiyat guncellendi: Jetstar ucuslarinda yuzde 11 indirim, diger tum Classic Flight Rewards ve Classic Upgrade Rewards'da yuzde 20'ye kadar artis. Qantas'in Emirates ile ittifaki: First Class award rezervasyonu 2025'te kaldirildi."},{date:"Haziran 2025",text:"2X Status Credits ve 2X Qantas Points kampanyalari duzenlendi. Platinum One statusunun oncelikli upgrade erisimi iyilestirildi. Lifetime Gold icin 10.000 SC esiginde 1 yillik ucretsiz Platinum statusu yeni avantaji eklendi."}],
+compare:[
+  {lbl:"Gunluk harcama entegrasyonu",target:"Market, yakit, sigorta - her gunluk harcama puan kazandiriyor.",ms:"Kart harcamasi disinda gunluk yasam entegrasyonu cok sinirli."},
+  {lbl:"Uye penetrasyonu",target:"Nufusun yuzde 53'u uye - olaganustu penetrasyon.",ms:"Turkiye penetrasyonu goreceli dusuk."},
+  {lbl:"Oneworld",target:"JAL, Cathay, BA, Qatar erisimi.",ms:"Star Alliance - 44 havayolu."},
+  {lbl:"Partner ekosistemi",target:"Market, otel, yakit, sigorta - cok genis.",ms:"Kart ve otel partnerleri var, genisletilebilir."},
+  {lbl:"Mil degeri",target:"Yaklasik 1,0-1,5 sent.",ms:"Yaklasik 0,8-1,0 sent."},
+  {lbl:"Lounge",target:"Qantas Club - cok genis ag.",ms:"THY Lounge - iyi ama sinirli nokta."}
+],
+insights:[
+  {bold:"Gunluk yasam entegrasyonu uye aktivasyonunu patlatir.",text:" Qantas'in market alisverisinden puan kazandirmasi uyelerin her gun programla temas etmesini sagliyor. M&S'nin Turkiye'deki buyuk market zincirleriyle benzer ortaklik kurulmasi donusturucu olur."},
+  {bold:"Uye penetrasyon hedefi belirlenebilir.",text:" Qantas nufusun yuzde 53'unu uye yapti. M&S icin Turkiye'de benzer bir hedef koyup buna yonelik uye edinme stratejisi gelistirmek mumkun."},
+  {bold:"Lounge agini genislet.",text:" Qantas Club domestic agi cok genis. M&S'nin Turkiye ic hat noktalarda lounge veya oncelikli alan genisletmesi ust kademe uye memnuniyetini arttirir."}
+]},
+{rank:11,id:"milesmore",airline:"Lufthansa Group",program:"Miles & More",region:"Avrupa",alliance:"Star Alliance",color:"#05164d",members:"~35 milyon",founded:1993,model:"Mesafe + kabin bazli",
+summary:"Avrupa'nin en buyuk FFP'si. Lufthansa, SWISS, Austrian, Brussels, Eurowings dahil. HON Circle sektorun en seckin statuslerinden biri. Haziran 2025'te onemli degisiklik: kendi grup ucuslarinda award fiyatlari dinamik sisteme gecti.",
+tiers:[
+  {name:"Frequent Traveller",req:"35.000 mil veya 30 ucus / yil",perks:"Oncelikli binis, koltuk secimi, Star Alliance Silver"},
+  {name:"Senator",req:"100.000 mil veya 50 ucus / yil",perks:"Lufthansa Business Lounge, 2 ekstra bagaj, Star Alliance Gold"},
+  {name:"HON Circle",req:"600.000 mil (LH Grubu metal)",perks:"First Class Lounge her zaman, ozel hat, kisisel yonetici, Star Alliance Gold"}
+],
+earning:"Mesafe + kabin. Economy yuzde 25-100. Business yuzde 150. First yuzde 200. Frankfurt-Istanbul Economy yaklasik 1.400 mil. Haziran 2025'ten itibaren LH Grubu kendi metal award fiyatlari dinamik. Mil degeri yaklasik 1,0-1,5 sent.",
+news:[{date:"Nisan 2026",text:"ITA Airways Star Alliance'a katildi: Miles & More uyeleri artik ITA uzerinden Roma ve Italya ic hat guzergahlarina award bilet rezervasyonu yapabiliyor."},{date:"Haziran 2025",text:"LH Grubu'nun kendi operasyonlu ucuslarinda award fiyatlari sabit chart'tan dinamik fiyatlamaya gecti. Lufthansa, SWISS, Austrian, Brussels uzerinden odul biletleri artik fiyati belirsiz. Onemli uyari: Non-LH Star Alliance partnerlerinde (United, Singapore, Air Canada) sabit chart korunmaya devam ediyor."},{date:"2025",text:"Yuksek fuel surcharge uyarisi: Lufthansa uzun hat Business Class icin award biletine ek olarak 65-150 dolar arasinda fuel surcharge uygulamasi devam ediyor — net mil degerini ciddi dusuruyor. HON Circle esigi 600.000 qualifying mil olarak guncellendi."}],
+compare:[
+  {lbl:"HON Circle",target:"Dunyanin en prestijli statuslerinden biri. 600K mil sart - cok zor.",ms:"Elite Plus en ust kademe. HON Circle gibi algi yok."},
+  {lbl:"Grup avantaji",target:"LH, SWISS, Austrian, Brussels tek programda.",ms:"THY tek marka. Grup programi yok."},
+  {lbl:"Award chart",target:"LH metal dinamige gecti - deger azaldi.",ms:"Goreceli stabil - avantaj."},
+  {lbl:"Star Alliance",target:"44 havayolu. ITA eklendi.",ms:"Ayni ittifak."},
+  {lbl:"Mil degeri",target:"Yaklasik 1,0-1,5 sent. Dinamik gecisle ongorelemez.",ms:"Yaklasik 0,8-1,0 sent. Stabil."},
+  {lbl:"Avrupa kapsam",target:"Avrupa'nin en genis domestic ve bolgesel agi.",ms:"Istanbul hub'indan Avrupa'ya guclu baglanti."}
+],
+insights:[
+  {bold:"Dinamige gecen rakiplere karsi stabil kalmak avantaj.",text:" Lufthansa kendi metal ucuslarinda dinamige gecti. M&S bunu firsata donusturmeli: 'biz sabit award fiyati sunuyoruz' mesaji guclu."},
+  {bold:"Grup programi uzun vadede degerlendirilmeli.",text:" THY buynyesindeki AnadoluJet ve diger markalarla ortak bir program yapisi maliyet verimliligi ve uye tabani buyumesi saglayabilir."},
+  {bold:"Prestij statu iletisimi guclendirmeli.",text:" HON Circle'in kuresel itibari var. M&S Elite Plus'in da bu duzeyde bir prestij algisi yaratmasi icin ust segment uye deneyimi iyilestirilmeli."}
+]},
+{rank:12,id:"asiamiles",airline:"Cathay Pacific",program:"Asia Miles",region:"Asya-Pasifik",alliance:"Oneworld",color:"#005b6a",members:"~12 milyon",founded:1993,model:"Mesafe + kabin bazli",
+summary:"Cathay Pacific ve Cathay Dragon'un programi. Hong Kong Hub merkezli. Oneworld uyesi. Business Class ozellikle Asya-Pasifik guzergahlarinda award degeri yuksek. Marco Polo Club (ayri statu programi) ile Asia Miles birlikte calisiyor.",
+tiers:[
+  {name:"Green (Temel)",req:"Kayit ile",perks:"Temel mil kazanimi"},
+  {name:"Silver (Marco Polo)",req:"30.000 miles veya 25 ucus",perks:"Yuzde 25 bonus mil, koltuk secimi, Oneworld Ruby"},
+  {name:"Gold (Marco Polo)",req:"60.000 miles veya 50 ucus",perks:"Yuzde 50 bonus mil, lounge erisimi, Oneworld Sapphire"},
+  {name:"Diamond (Marco Polo)",req:"120.000 miles veya 100 ucus",perks:"Yuzde 100 bonus mil, First Class Lounge, Oneworld Emerald"}
+],
+earning:"Mesafe + kabin. Economy yuzde 25-100. Business yuzde 100, First yuzde 150. Hong Kong-Istanbul Business award yaklasik 65.000 Asia Miles. Mil degeri yaklasik 1,0-1,5 sent.",
+news:[{date:"Nisan 2026",text:"ITA Airways Star Alliance'a katilmasiyla Asia Miles uyeleri artik ITA ucuslarinda mil kazanabiliyor. Cathay Pacific'in yenilenen Business Class Studio: Airbus A350-1000 ile Londra, Paris, New York ve Sydney rotalarinda sunuluyor."},{date:"Aralik 2025",text:"BA Avios devaluasyonunun dolayli etkisi: Avios ile Cathay Pacific ucuslarinda yuzde 11-14 Avios artisi yasandi. Asia Miles uzerinden Cathay rezervasyonu bu devaluasyondan etkilenmedi — avantajli konum."},{date:"2025",text:"Marriott Bonvoy ve Hilton Honors ile transfer ortakliklari guclendi. Marco Polo Club 2025 yenilikleri: Diamond seviyesi icin upgrade listesinde daha yuksek oncelik. Asia Miles'tan Cathay Business Class odul bileti erisilebilirligi iyilestirildi."}],
+compare:[
+  {lbl:"Kazanim modeli",target:"Mesafe + kabin. M&S ile benzer.",ms:"Mesafe + kabin. Yapisal benzerlik."},
+  {lbl:"Hub gucu",target:"Hong Kong - Asya'nin en stratejik hub'i.",ms:"Istanbul - Avrupa-Asya koprusu."},
+  {lbl:"Oneworld",target:"BA, Qatar, JAL, Qantas erisimi.",ms:"Star Alliance - 44 havayolu."},
+  {lbl:"BA etkisi",target:"Avios devaluasyonu Cathay award fiyatlarini da vurdu.",ms:"Bu tur ittifak kirilganligi M&S'de daha az."},
+  {lbl:"Mil degeri",target:"Yaklasik 1,0-1,5 sent.",ms:"Yaklasik 0,8-1,0 sent."},
+  {lbl:"Otel transferi",target:"Marriott + Hilton transfer aktif.",ms:"Sinirli otel transfer secenegi."}
+],
+insights:[
+  {bold:"Otel transferi ekosistemi genisletilmeli.",text:" Cathay'in Marriott ve Hilton ile aktif transferi uyelerin non-ucus harcamalarini programa cekiyor. M&S'nin otel transfer ortakliklarini genisletmesi onemli."},
+  {bold:"Hub pozisyonu iletisimde kullanilmali.",text:" Istanbul'un Avrupa-Asya koprusu konumu M&S'nin en guclu karti. Bu cografi avantaj award agi iletisiminde agresif kullanilabilir."},
+  {bold:"Ittifak kirilganliklarina dikkat.",text:" BA devaluasyonunun Cathay award'larini otomatik etkilemesi ittifak ici bagimlilik riskini gosteriyor. M&S'nin kendi award fiyat politikasinin bagimsizligini korumasi kritik."}
+]},
+{rank:13,id:"mileageplan",airline:"Alaska Airlines",program:"Mileage Plan",region:"ABD (Bati Yakasi)",alliance:"Oneworld",color:"#00805d",members:"~7 milyon",founded:1987,model:"Mesafe bazli (nadir kalan)",
+summary:"ABD'de hala mesafe bazli modeli koruyan nadir programlardan biri. Bu yuzden uzak destinasyon biriktiricilerin favorisi. Oneworld uyesiyle birlikte erisim genisledi. Partner ucuslarda ozellikle Emirates ve Finnair uzerinden biriktirme cok degerli.",
+tiers:[
+  {name:"MVP",req:"20.000 Elite Qualifying Miles / yil",perks:"Oncelikli binis, ucretsiz bagaj, Star Alliance Silver"},
+  {name:"MVP Gold",req:"40.000 EQM / yil",perks:"Lounge erisimi, upgrade listesi onceligi, Oneworld Sapphire"},
+  {name:"MVP Gold 75K",req:"75.000 EQM / yil",perks:"Anlik upgrade (bos koltuklarda), sinirsiz lounge, Oneworld Emerald"}
+],
+earning:"Mesafe bazli: 1 uculan mil = 1-3 Mileage Plan mile. Emirates Gold'da 125 prim. Mil degeri yaklasik 1,8-2 sent - ABD'nin en degerli programi. Oneworld sweet spot'lar cok guclu.",
+news:[{date:"Haziran 2026",text:"Alaska Mileage Plan artik 'Atmos Rewards' olarak yeniden adlandirilmaya basliyor (Hawaiian merger sonrasi). Yeni partner: Oman Air Oneworld'e katiliminin ardindan Alaska uzerinden Muscat rezervasyonu acildi. Bilt ve Bank of America 1:1 transfer partnerleri korunuyor."},{date:"Eylul 2025",text:"Milestone Rewards guncellendi: Belirli ucus sayilarinda (10, 20, 30... ucus) bonus mil, upgrade kuponu ve ekstra avantajlar. CLEAR+ uyelik kampanyasi: 1.500 Mileage Plan mili kazanma firsati sunuldu."},{date:"Agustos 2025",text:"Delta Medallion status match tekliflendi: Delta'nin MQD sisteminden rahatsiz uyeler Alaska'ya status match ile gecebilir. 'Sadakatin satin alma gucu degil ucus sayisi olmasi gerekir' mesajiyla Delta sistemine dolaylikli elesтiri yapildi."},{date:"Mayis 2025",text:"Philippine Airlines (32. ortak) eklendi: Manila ve Asya-Pasifik rotalarinda Alaska mili kazanilabiliyor. Mesafe bazli model korunuyor — ABD'de harcama bazina gecmeyen nadir program olma ozelligi sureyor."}],
+compare:[
+  {lbl:"Kazanim modeli",target:"Mesafe bazli - M&S ile ayni! Seffaf ve adil algisi.",ms:"Mesafe bazli. Yapisal ozdeslik."},
+  {lbl:"Mil degeri",target:"Yaklasik 1,8-2 sent - ABD'nin en yuksegi.",ms:"Yaklasik 0,8-1,0 sent. Buyuk fark."},
+  {lbl:"Partner biriktirme",target:"Emirates Gold 125 prim - cok cazibeli.",ms:"Star Alliance partner primleri var."},
+  {lbl:"Oneworld",target:"Yeni uye. Erisim genisledi.",ms:"Star Alliance - daha genis ag."},
+  {lbl:"Model direnci",target:"Harcama bazina gecmeyerek musteri sadakati koruyor.",ms:"Mesafe modelini korumak M&S icin de avantaj."},
+  {lbl:"Bolgesel guc",target:"ABD Bati Yakasi baskin.",ms:"Turkiye ve cevresi baskin."}
+],
+insights:[
+  {bold:"Mesafe modeli iletisim avantajina donusturmeli.",text:" Alaska hala mesafe bazli kaldigi icin 'daha adil program' olarak algilaniyor. M&S ayni iletisimi yapmali: 'biz ucucugunuzu odulendiriz, ne kadar harcadiginizi degil.'"},
+  {bold:"Partner prim yapisini zenginlestir.",text:" Alaska'nin Emirates Gold 125 prim gibi ozel partner bonus yapilari uye katilimini artiriyor. M&S secili partner ucuslarda bonus mil kampanyalari duzenleyebilir."},
+  {bold:"Yuksek mil degeri algisi yaratilmali.",text:" Alaska'nin yaklasik 1,8-2 sent degeri guclu uye bagliligi yaratiyor. M&S'nin mil degerini arttiracak oduller sunmasi bu algiyi guclendirir."}
+]},
+{rank:14,id:"rapidrewards",airline:"Southwest Airlines",program:"Rapid Rewards",region:"ABD (Ic Hat)",alliance:"Bagimsiz",color:"#304cb2",members:"~50 milyon",founded:1987,model:"Harcama bazli",
+summary:"Sadece ABD ic hat ve yakin cevre ucuslarini kapsayan ozel bir program. Kara liste yok, her koltuk award bileti. Companion Pass (yillik belirli harcama sonrasi ucretsiz refakatci) sektorun en degerli tekil avantaji olarak aniliyor.",
+tiers:[
+  {name:"A-List",req:"25 ucus veya 35.000 tier puan / yil",perks:"Oncelikli binis, ucretsiz standby, yuzde 25 puan bonusu"},
+  {name:"A-List Preferred",req:"50 ucus veya 70.000 tier puan / yil",perks:"Yuzde 100 puan bonusu, ucretsiz inflight WiFi"},
+  {name:"Companion Pass",req:"135.000 puan / takvim yili (ozel)",perks:"Yil sonuna kadar bir kisi her ucusta ucretsiz refakatci"}
+],
+earning:"1 dolar harcama = 6-12 puan. Puan degeri yaklasik 1,5 sent. Companion Pass = yilin en degerli tekil avantaji. Degisiklik ve iptal ucreti yok.",
+news:[{date:"Haziran 2026",text:"Rapid Rewards puanlari yuzde 45 indirimle satin alinabiliyor (22 Temmuz 2026'ya kadar). Companion Pass devam ediyor: 135.000 puan biriktiren uyeler takvim yili sonuna kadar bir kisi icin ucretsiz refakatci hakki kazaniyor."},{date:"2025-2026",text:"Assigned seating (koltuk numarasi) sistemine gecis tamamlandi: 50 yillik 'nereye oturursan otur' modeli sona erdi. Pek cok sadik uye rahatsizligini dile getirdi. Red-eye (gece) ucuslar ilk kez hayata gecirildi."},{date:"Mart 2025",text:"Wanna Get Away farelerinde puan kazanim orani habersizce dusuruldu. Diger programlarin aksine onceden duyurulmayan bu degisiklik elestirildi. CEO degisikligi: aktivist fon Elliott'in baskisiyla yonetim yenilendi."}],
+compare:[
+  {lbl:"Model",target:"Tamamen ic hat / yakin cevre. M&S ile dogrudan karsilastirilabilir degil.",ms:"Uluslararasi guclu. Ic hat da var."},
+  {lbl:"Esneklik",target:"Degisiklik/iptal ucreti yok. Sektorun en esnek programi.",ms:"Ucret var. Esneklik sinirli."},
+  {lbl:"Companion Pass",target:"En degerli tekil avantaj. Her ucusta refakatci ucretsiz.",ms:"Benzeri yok. Adaptasyon degerlendirilebilir."},
+  {lbl:"Uluslararasi",target:"Yok. Sadece ABD ve yakin cevre.",ms:"Ana guc uluslararasi baglanti."},
+  {lbl:"Koltuk atama",target:"2026'da assigned seating'e gecildi - buyuk degisim.",ms:"Standart koltuk sistemi mevcut."},
+  {lbl:"Degisim kulturu",target:"50 yillik modeli degistirdi - cesur ama riskli.",ms:"Program degisimleri daha temkinli."}
+],
+insights:[
+  {bold:"Companion Pass konsepti adaptasyon icin degerlendirilmeli.",text:" M&S ust statu uyelere yilda 1-2 kez 'refakatci ucretsiz ucar' avantaji sunabilir. Aile odakli uyelerde cok guclu baglilik yaratir."},
+  {bold:"Degisiklik/iptal ucretsizligi rekabet silahi.",text:" Southwest'in esneklik politikasi dev uye kitlesi yaratmasinda belirleyici. M&S award bilet degisiklik ucretlerini dusurse uye memnuniyeti artar."},
+  {bold:"50 yillik model degistirildi - ders var.",text:" Southwest assigned seating'e gecti ve markaya buyuk hasar verdi. M&S koklu degisiклiklerде mutlaka uye arastirmasi yapmali ve pilot test etmeli."}
+]},
+{rank:15,id:"lifemiles",airline:"Avianca",program:"LifeMiles",region:"Latin Amerika",alliance:"Star Alliance",color:"#d62a2a",members:"~10 milyon",founded:1994,model:"Harcama bazli ($/mil)",
+summary:"Kolombiya merkezli Avianca'nin programi. Star Alliance uyesi. 2023'e kadar Star Alliance odul biletleri icin ucuz fiyatlariyla meshurdu. Ancak Agustos 2024 - Mayis 2026 arasinda 3 devaluasyon gecirdi ve guvenilir sweet spot programi imaji ciddi hasar gordu. 2024'te Cardless ile ABD kart lansmani yapildi.",
+tiers:[
+  {name:"Red Plus",req:"Temel statu",perks:"1 yillik lounge erisimi, koltuk secimi"},
+  {name:"Silver",req:"12.000 qualifying mil / yil",perks:"Yuzde 25 bonus mil, 6 upgrade kuponu, Star Alliance Silver"},
+  {name:"Gold",req:"24.000 qualifying mil / yil",perks:"Yuzde 75 bonus mil, lounge erisimi, Star Alliance Gold"},
+  {name:"Diamond",req:"45.000 qualifying mil / yil",perks:"Yuzde 100 bonus mil, oncelikli upgrade, ozel concierge"},
+  {name:"Club Concierge",req:"110.000 qualifying mil / yil (Avianca metal)",perks:"7/24 WhatsApp destek, sinirsiz lounge 4 misafir, yuzde 100 bonus"}
+],
+earning:"Harcama bazli: 1 dolar = 3 mil (Basic). Flex 1 dolar = 8 mil. Business 1 dolar = 10 mil. Amex MR, Citi, Capital One'dan transfer var. Mil degeri yaklasik 1,2-1,4 sent (ancak 3 devaluasyonla hizla eridi).",
+news:[{date:"Mayis 2026",text:"3. devaluasyon (Mayis 2026): 15 ayda ucuncu habersiz fiyat artisi. ABD-Avrupa Business Class Star Alliance partner ucuslarinda yuzde 45'e kadar artis. New York-Frankfurt Lufthansa Business Class 80.000'den 92.400'e yukseldi. 'Kazan-harca' stratejisi onerilir, mil biriktirme onerilmez."},{date:"Nisan 2026",text:"ITA Airways ortakligi acildi: ITA'nin Star Alliance'a katilmasiyla LifeMiles uzerinden Roma ve Italya'ya award rezervasyonu basladi. Ayni ay: 160 yuzde bonus ile mil satin alma kampanyasi duzenlendi (28 Nisan 2026'ya kadar, 1,27 sent/mil)."},{date:"Subat 2025",text:"2. devaluasyon: Popular rotalarda ek fiyat artisi. United Polaris Avrupa ucuslari 80.000'den 92.400'e cikti. Karma-kabin fiyatlandirmasi avantaji tamamen kaldirildi."},{date:"Agustos 2024",text:"1. devaluasyon: Star Alliance partner ucuslarinda (United, ANA, EVA) habersizce yuzde 50'ye kadar artis. Toplumsal baskiyla kismi geri adim atildi. Bu degisiklik programin guvenilirlik sorununu baslatti."}],
+compare:[
+  {lbl:"Star Alliance",target:"Ayni ittifak. M&S ile esit erisim.",ms:"Ayni ittifak."},
+  {lbl:"Devaluasyon gecmisi",target:"15 ayda 3 devaluasyon. Program guvenilirligI hasar gordu.",ms:"Son buyuk devaluasyon yok. Buyuk avantaj."},
+  {lbl:"Kazanim modeli",target:"Harcama bazli. Basic fare'de de artik kazanim var.",ms:"Mesafe bazli. Seffaf ve stabil."},
+  {lbl:"ABD kart",target:"Cardless ile 2 Amex kart. ABD pazari acildi.",ms:"Uluslararasi kart yok."},
+  {lbl:"Transfer partnerleri",target:"Amex MR, Citi, Capital One, Bilt aktif.",ms:"Cok sinirli transfer ekosistemi."},
+  {lbl:"Guvenilirlik",target:"Habersiz devaluasyonlar ile ciddi itibar kaybi.",ms:"Seffaf degisiklik politikasi icin firsat."}
+],
+insights:[
+  {bold:"Seffaflik guclu rekabet silahi.",text:" LifeMiles'in 3 habersiz devaluasyonu program guvenilirligini sarsti. M&S her degisikligi onceden duyurma politikasi benimserse 'guvenilir program' konumlanmasini guclendirir."},
+  {bold:"Transfer ekosistemi acilmali.",text:" LifeMiles'in Amex, Citi, Capital One ile transfer ortakliklari var. M&S bu alanda adim atarsa ozellikle yurt disinda yasayan Turklere degerli bir kanal acilir."},
+  {bold:"Star Alliance'i daha aktif kullan.",text:" Ikisi de Star Alliance uyesi. LifeMiles'in cukulusu M&S'nin Star Alliance ortaklari uzerinden odul bilet pazarlamasini guclendir icin bir firsat penceresi aciyor."}
+]}
+,
+{rank:15,id:"milessmiles",airline:"Turkish Airlines",program:"Miles&Smiles",
+region:"Orta Dogu / Avrupa",alliance:"Star Alliance",color:"#E30613",
+members:"~20 milyon",founded:2000,model:"Mesafe bazli",
+summary:"On Point Loyalty 2026: Kuresel #15 | $5.1 Milyar | +%94 artis (2023: $2.624B) | Mil degeri: 1.1 cent/mil (Piyasa tahmini). Miles&Smiles, Turkish Airlines'in sadakat programidir. 2000 yilinda kurulmus olup Star Alliance uyesi olarak 44 havayolunda mil kazanimi ve harcanmasina imkan tanir. Istanbul'un cografik konumu sayesinde 340'tan fazla destinasyona dogrudan ucus sunan THY, Miles&Smiles'i guclu bir hub programi haline getirmistir. On Point Loyalty 2026 raporunda #15 siraya yukselarak $5.1 milyar degerine ulasan program, 2023'e gore %94 deger artisi kaydetmistir. Bu, Top 100 icindeki en yuksek buyume oranlarindan biridir.",
+news:[
+  {date:"Haziran 2026",text:"Miles&Smiles, On Point Loyalty 2026 raporunda 15. siraya yukseldi. Program degeri $5.1 milyar olarak belirlendi — 2023'teki $2.624 milyara gore %94 artis. Bu buyume orani Top 100 icindeki en yuksek performanslardan biri."},
+  {date:"2025-2026",text:"Star Alliance uyeligi kapsaminda ITA Airways'in ittifaka katilmasiyla Miles&Smiles uyeleri artik Roma ve Italya ic hat guzergahlarina award rezervasyonu yapabiliyor."},
+  {date:"2025",text:"Mil Pusulasi (Mile Compass) kampanya serisi: Donusel bolgesel yapi ile aylik odul bileti indirim kampanyalari. Amerika ve Avrupa rotalarinda %30 mil indirimi kampanyalari duzenlendi."},
+  {date:"2024",text:"BKM Express, Axess (Akbank), World (Yapi Kredi) co-brand kart ortakliklari devam ediyor. THY, Turk bankalariyla guclu kart ekosistemi koruyor."}
+],
+tiers:[
+  {name:"Classic",req:"0-9,999 mil",perks:"Temel uyelik. Ucuslarda mil kazanimi, partner ortakliklari, mil harcama imkanlari."},
+  {name:"Classic Plus",req:"10,000-24,999 mil",perks:"Oncelikli check-in, ekstra bagaj hakki, Star Alliance Silver statusu."},
+  {name:"Elite",req:"25,000-49,999 mil",perks:"Lounge erisimi, 2 ekstra bagaj, Star Alliance Gold statusu, oncelikli binis."},
+  {name:"Elite Plus",req:"50,000+ mil",perks:"Ucretsiz Business Class yukseltme, sinirsiz lounge erisimi, 3 ekstra bagaj, Star Alliance Gold maksimum avantajlar."}
+],
+compare:[
+  {lbl:"Deger (On Point 2026)",ms:"$5.1 Milyar / #15",target:"Referans program"},
+  {lbl:"Ittifak",ms:"Star Alliance (44 havayolu)",target:"Star Alliance (44 havayolu)"},
+  {lbl:"Kazanim modeli",ms:"Mesafe bazli",target:"Program bazli farklilik"},
+  {lbl:"Mil gecerlilik",ms:"Son islem bazli",target:"Program bazli farklilik"},
+  {lbl:"Hub avantaji",ms:"Istanbul — 340+ destinasyon",target:"Program bazli farklilik"}
+],
+insights:[
+  {bold:"En yuksek buyume orani.",text:" Miles&Smiles, On Point 2026'da Top 100 icindeki en yuksek buyume oranlarindan birini yakaladi. %94 artis, programin stratejik degerinin piyasa tarafindan tescil edilmesi anlamina geliyor."},
+  {bold:"Star Alliance avantaji.",text:" 44 havayoluyla mil kazanimi ve harcamasi, Miles&Smiles'i rakip programlara karsi guclu kiliyor. ITA Airways eklemesiyle Avrupa erisimi daha da genisledi."},
+  {bold:"Istanbul hub gucu.",text:" THY'nin 340+ destinasyona dogrudan ucusu, Miles&Smiles'e rakiplerin kolayca taklit edemeyecegi bir cografik avantaj sagliyor."},
+  {bold:"Buyume potansiyeli.",text:" Mevcut $5.1 milyar deger, AAdvantage ($26.7B) ve SkyMiles ($31.8B) ile karsilastirildiginda buyuk bir bosluk var. Co-brand kart ekosisteminin gelismesi ve uluslararasi ortaklik genislemesi bu bogazi kapatabilir."}
+]}
+];
+var TIER_DETAILS={
+  "skymiles": [
+    {name:"Silver Medallion", color:"#9a9a94", details:[{icon:"🧳", label:"Bagaj", text:"1 ucretsiz ucretsiz kontrol bagaji (Delta-operasyonlu ucuslarda)"},
+      {icon:"🚀", label:"Binis", text:"Grup 1 oncelikli binis - neredeyse ilk binecekler arasinda"},
+      {icon:"💺", label:"Koltuk", text:"Basa donuk koltuk yukseltme listesine erisim (bos koltuk varsa)"},
+      {icon:"🌍", label:"Ittifak", text:"SkyTeam Elite statusu - 19 havayolunda avantajlar"},
+      {icon:"📞", label:"Destek", text:"Oncelikli musteri hizmetleri hatti"},
+      {icon:"✈️", label:"Kazanim", text:"Ucus millerinde +7 kat bonus kazanim carpani"},
+      {icon:"🎫", label:"Ekstra", text:"Basa donuk yukseltme standby listesine otomatik ekleme"},{icon:"🏨",label:"Otel",text:"VIP Access otellerinde %15 oda indirimi veya ucretsiz kahvalti/park/F&B kredisi (Delta Stays)"},{icon:"🚗",label:"Arac",text:"Hertz Gold Plus Rewards Five Star statusu otomatik + $1 = 5 Skywards mil"},{icon:"🔒",label:"CLEAR+",text:"CLEAR+ hizlandirmasi: Silver icin indirimli yillik uyelik"}]},
+    {name:"Gold Medallion", color:"#c8a84b", details:[{icon:"🧳", label:"Bagaj", text:"2 ucretsiz kontrol bagaji + 1 onceki bagaj ucreti iadesi"},
+      {icon:"🍸", label:"Lounge", text:"Sky Club'a tek misafir giris hakki (aile/arkadas) + Delta ucuslarinda erisim"},
+      {icon:"💳", label:"Ucret Muafiyeti", text:"Ucus degisiklik ve standby ucretleri tamamen kaldirildi"},
+      {icon:"🌍", label:"Ittifak", text:"SkyTeam Elite Plus statusu - lounge erisimi, 2. bagaj"},
+      {icon:"✈️", label:"Kazanim", text:"+8 kat bonus mil carpani"},
+      {icon:"🚀", label:"Binis", text:"Grup 1 binis - en erken binilenler arasinda"},
+      {icon:"📞", label:"Destek", text:"Oncelikli hat ve beklemesiz baglanti garantisi"},{icon:"🏨",label:"Otel",text:"VIP Access otellerinde ucretsiz oda yukseltme + erken check-in + gec check-out (musaitlige gore)"},{icon:"🚗",label:"Arac",text:"Hertz Presidents Circle statusu — Hertz'in en yuksek elit seviyesi"},{icon:"🔒",label:"Guvenlik",text:"ABD secili havalimanlarinda oncelikli guvenlik seridi (Frequent Traveler Lane)"}]},
+    {name:"Platinum Medallion", color:"#a0b0c0", details:[{icon:"🧳", label:"Bagaj", text:"3 ucretsiz kontrol bagaji"},
+      {icon:"🎁", label:"Choice Benefits", text:"Yillik secim odulu: 20.000 bonus mil VEYA upgrade kuponu VEYA Sky Club uyeligi VEYA Companion Certificate"},
+      {icon:"🎟️", label:"Companion", text:"Companion Certificate: ayni ucus sinifinda 1 refakatci indirimi"},
+      {icon:"💺", label:"Upgrade", text:"Basa donuk Business/First upgrade onceligi - Golddan once islem gorur"},
+      {icon:"✈️", label:"Kazanim", text:"+9 kat bonus mil carpani"},
+      {icon:"🌍", label:"Ittifak", text:"SkyTeam Elite Plus statusu"},
+      {icon:"🍸", label:"Lounge", text:"Sky Club erisimi (ucusla birlikte)"},{icon:"🎁",label:"Choice Benefits",text:"Yillik 1 secim: Global Upgrade Sertifikasi VEYA 20.000 bonus mil VEYA Amex kredi VEYA Sky Club uyeligi"},{icon:"🏨",label:"Otel",text:"Delta Stays VIP: suite onceligi + welcome amenity + ucretsiz park + ozel VIP karsilama"},{icon:"🚗",label:"Arac",text:"Hertz Presidents Circle (Hertz en ust kademesi)"},{icon:"🎟️",label:"Companion",text:"Companion Certificate: secili rotalarda refakatci indirimli ucabilir"}]},
+    {name:"Diamond Medallion", color:"#4fc3f7", details:[{icon:"🍸", label:"Lounge", text:"Sinirsiz Sky Club erisimi + 6 misafir konuklama hakki / yil"},
+      {icon:"👑", label:"360 Concierge", text:"7/24 kisisel concierge - ozel hizmet hatti, bekleme yok"},
+      {icon:"🎁", label:"Choice Benefits", text:"Yillik 3 adet secim odulu biriktirme hakki (Platinumdan 3 kat)"},
+      {icon:"🌍", label:"Companion", text:"Global Companion Certificate: uluslararasi ucuslarda da gecerli"},
+      {icon:"💺", label:"Upgrade", text:"En yuksek oncelik - tum kabin yukseltmelerinde Diamond ilk"},
+      {icon:"✈️", label:"Kazanim", text:"+11 kat bonus mil carpani"},
+      {icon:"🧳", label:"Bagaj", text:"4 ucretsiz kontrol bagaji"},
+      {icon:"📞", label:"Destek", text:"Ozel hat - ortalama 2 dakika bekleme suresi ile yanit"},{icon:"🎁",label:"Choice Benefits",text:"Yillik 3 secim: Global Upgrade, Sky Club Executive Uyelik (2 misafir), Gifted Status (4 kisiye), MQD Accelerator, Starbucks, Amex Kredi"},{icon:"🏨",label:"Otel",text:"Delta Stays: suite garantisi + VIP amenity paketi + ozel concierge + ucretsiz minibar"},{icon:"🚗",label:"Arac",text:"Hertz Presidents Circle + 360 Concierge arac rezervasyon hizmeti"},{icon:"👑",label:"360 Concierge",text:"7/24 kisisel concierge: sifir bekleme, seyahat planlama, VIP etkinlik erisimi"},{icon:"🌟",label:"Reclaim Status",text:"Seyahat yavaslasa bile 3 aylik status uzatma (Reclaim My Status — sadece Diamond/Platinum)"}]}
+  ],
+  "aadvantage": [
+    {name:"Gold", color:"#c8a84b", details:[{icon:"🧳", label:"Bagaj", text:"1 ucretsiz kontrol bagaji (ABD ic hat)"},
+      {icon:"🚀", label:"Binis", text:"Oncelikli binis Grup 4'ten once"},
+      {icon:"💺", label:"Koltuk", text:"Ucus gunundan once bos Preferred koltuk secimi"},
+      {icon:"🌍", label:"Ittifak", text:"Oneworld Ruby - 13 havayolunda temel avantajlar"},
+      {icon:"✈️", label:"Kazanim", text:"Her uygun ucusta 500 bonus mil"},
+      {icon:"📞", label:"Destek", text:"Oncelikli telefon hizmetleri"},{icon:"🏨",label:"Otel",text:"AAdvantage Hotels Gold: Hilton, Marriott, Hyatt'ta ekstra Loyalty Point + bonus mil"},{icon:"🚗",label:"Arac",text:"Avis Preferred Plus statusu (ucretsiz) + Budget Fastbreak"},{icon:"📶",label:"WiFi",text:"AA ucuslarinda ucretsiz WiFi (2026'dan itibaren tum AAdvantage uyeleri icin)"},{icon:"🏨",label:"Otel",text:"Emirates Holidays Gold paketi: otel + ucus kombinesinde VIP konuk statusu + bonus mil"},{icon:"🚗",label:"Arac",text:"Hertz Gold Plus Rewards otomatik Gold statusu + premium arac oncelikli secim"},{icon:"🛍️",label:"Fashion Avenue",text:"Dubai Mall Fashion Avenue Lounge erisimi + ucretsiz teslimat hizmetleri (Platinum beraber)"},{icon:"💰",label:"Cash+Miles",text:"2.000 mil = 30 dolar tasarruf: ucus, fazla bagaj, lounge, koltuk secimi (normal donem 15 dolar)"},{icon:"🏨",label:"Otel",text:"IHG One Rewards Gold Elite statusu: oda yukseltme onceligi + bonus puan"},{icon:"🚗",label:"Arac",text:"Europcar Privilege Plus + Hertz Gold Plus Rewards statusu"},{icon:"🎁",label:"The Life",text:"'The Life' platformu: Avios ile 200+ luks otel, ozel tur ve deneyim rezervasyonu"},{icon:"🛒",label:"Duty Free",text:"Qatar Duty Free Gold: erken binis VIP erisimi + ozel indirim kuponu"},{icon:"🏨",label:"Otel",text:"Accor Silver statusu + Flying Blue Hotels'de Gold VIP konuk + oda yukseltme + bonus XP"},{icon:"🚗",label:"Arac",text:"Europcar Privilege Plus + Hertz Gold Plus Rewards otomatik"},{icon:"🎁",label:"Flying Blue Extra",text:"Flying Blue Extra aboneligi: ekstra XP + Promo Awards oncelikli erisim + lounge kredisi"},{icon:"🏨",label:"Otel",text:"Marriott Bonvoy Gold Elite + IHG Platinum Elite statusu — BA Gold'dan otomatik"},{icon:"🚗",label:"Arac",text:"Hertz Presidents Circle + Avis Presidents Club — her ikisi de maksimum kademe"},{icon:"🎟️",label:"Gold Upgrade",text:"Gold Upgrade Voucher: Business Class'a yillik ucretsiz upgrade (1 adet)"},{icon:"🛒",label:"Duty Free",text:"BA Highlife Shop'ta Gold VIP: ucretsiz teslimat + ozel indirim + erken erisim"},{icon:"🏨",label:"Otel",text:"Qantas Hotels Gold VIP: oda yukseltme + gec check-out + welcome amenity paket"},{icon:"🚗",label:"Arac",text:"Europcar Privilege Plus + Hertz Gold statusu"},{icon:"🛒",label:"Lifestyle",text:"Qantas Wine VIP uyelik + Qantas Holidays Gold paket indirimleri"},{icon:"🏨",label:"Otel",text:"Avianca Hotels Gold: oda yukseltme + bonus mil + late check-out"},{icon:"🚗",label:"Arac",text:"Hertz Presidents Circle statusu"},{icon:"🎟️",label:"Upgrade",text:"Oncelikli Business Class upgrade listesi + fazla upgrade kuponu"}]},
+    {name:"Platinum", color:"#a0a0a0", details:[{icon:"🧳", label:"Bagaj", text:"2 ucretsiz kontrol bagaji"},
+      {icon:"💺", label:"Upgrade", text:"500 mil arti co-pay ile Main Cabin Extra ve Preferred koltuklara upgrade"},
+      {icon:"🎟️", label:"Upgrade Kuponu", text:"8 adet upgrade kuponu yilda - partner ucuslarda da kullanilabilir"},
+      {icon:"🌍", label:"Ittifak", text:"Oneworld Sapphire - lounge erisimi, oncelikli binis"},
+      {icon:"✈️", label:"Kazanim", text:"+8 kat bonus carpani + 500 mil bonus her ucus"},
+      {icon:"🍸", label:"Lounge", text:"Oneworld partner lounge erisimi (partner ucuslarinda)"},{icon:"🏨",label:"Otel",text:"AAdvantage Hotels Platinum: ozel konuk statusu + oda yukseltme + gec check-out"},{icon:"🚗",label:"Arac",text:"Avis Presidents Club + Budget Fastbreak Gold + ucretsiz arac yukseltme"},{icon:"🎟️",label:"Upgrade",text:"8 upgrade kuponu / yil — partner ucuslarda da gecerli"},{icon:"🏠",label:"Home Check-in",text:"Dubai'de ev check-in: bagajinizi evinizden teslim edin, havalimanina elimsiz gidin"},{icon:"🏨",label:"Otel",text:"Jumeirah VIP: suite garantisi + ozel butler + welcome amenity + ucretsiz SPA"},{icon:"🚗",label:"Arac",text:"Hertz Presidents Circle statusu + Dubai'de private chauffeur servisi"},{icon:"🛍️",label:"VIP Alisveris",text:"Dubai Mall: Fashion Avenue VIP lounge + 20.000 mil/ay limit + kisisel alisveris asistani"},{icon:"👑",label:"Platinum Paketi",text:"Yillik personalize hediye paketi + VIP bagaj etiketleri + First Class check-in her zaman"},{icon:"👑",label:"Al Mourjan",text:"Al Mourjan Business Lounge (Doha HIA) — dunyanin en buyuk ve prestijli lounge'larindan"},{icon:"🏨",label:"Otel",text:"IHG Platinum Elite + Marriott Bonvoy Gold Elite statusu — dogrudan Privilege Club'dan"},{icon:"🚗",label:"Arac",text:"Hertz Presidents Circle + Europcar Privilege Supreme (en ust Europcar kademesi)"},{icon:"🎯",label:"Concierge",text:"7/24 Platinum concierge: ucus, otel, VIP etkinlik ve ozel deneyim planlama"},{icon:"🛒",label:"Duty Free",text:"Qatar Duty Free Platinum Suite: kisisel alisveris asistani + ucretsiz saraplama"},{icon:"🏨",label:"Otel",text:"Accor Platinum statusu: ucretsiz gece hediyesi (yillik) + suite yukseltme + lounge erisimi"},{icon:"🚗",label:"Arac",text:"Europcar Privilege Supreme + Hertz Presidents Circle (her ikisi de maksimum kademe)"},{icon:"🎯",label:"Concierge",text:"Platinum ozel hat + kisisel seyahat asistani — 7/24, beklemesiz"},{icon:"🏨",label:"Otel",text:"Qantas Hotels Platinum: suite yukseltme + complimentary minibar + spa kredisi"},{icon:"🚗",label:"Arac",text:"Europcar Privilege Supreme + Hertz Presidents Circle"},{icon:"🌟",label:"Lifetime",text:"Her 10.000 Status Credit'te 1 yil ucretsiz Platinum uzatma (2026 yeni avantaj)"}]},
+    {name:"Platinum Pro", color:"#8b7355", details:[{icon:"🧳", label:"Bagaj", text:"3 ucretsiz kontrol bagaji"},
+      {icon:"🎟️", label:"Upgrade Kuponu", text:"Daha fazla upgrade kuponu + oneworld Sapphire"},
+      {icon:"🌍", label:"Ittifak", text:"Oneworld Emerald - First Class lounge erisimi"},
+      {icon:"💺", label:"Upgrade", text:"Yuksek oncelikli upgrade listesi - Platinumdan once"},
+      {icon:"✈️", label:"Kazanim", text:"+9 kat bonus mil carpani"},{icon:"🎁",label:"100K LP",text:"100.000 Loyalty Point: Admirals Club uyeligi VEYA upgrade sertifikasi VEYA partner transferi"},{icon:"🏨",label:"Otel",text:"Concierge.key secilmis uyelere ozel otel ve deneyim teklifleri"},{icon:"🚗",label:"Arac",text:"Avis Presidents Club + Budget Fastbreak Gold + Hertz Gold statusu"}]},
+    {name:"Executive Platinum", color:"#1a1a18", details:[{icon:"🧳", label:"Bagaj", text:"3 ucretsiz kontrol bagaji + tum ucretsiz degisiklik"},
+      {icon:"🎟️", label:"Companion Upgrade", text:"Sinirsiz refakatci yukseltme - ayni rezervasyondaki kisiye de upgrade"},
+      {icon:"💺", label:"Upgrade Onceligi", text:"En yuksek upgrade onceligi - ucan tum EP'lerden once"},
+      {icon:"🌍", label:"Ittifak", text:"Oneworld Emerald - her havalimaninda First/Business lounge"},
+      {icon:"✈️", label:"Kazanim", text:"+11 kat bonus carpani"},
+      {icon:"📞", label:"Destek", text:"Ozel EP telefon hatti - saniyeler icinde yanit"},
+      {icon:"🆓", label:"Degisiklik", text:"Ucret olmaksizin sinirsiz ucus degisikligi"},{icon:"👑",label:"EP Hatti",text:"7/24 ozel EP telefon hatti — saniyeler icinde yanit, beklemesiz"},{icon:"🎟️",label:"Companion",text:"Sinirsiz companion upgrade: ayni rezervasyondaki her kisi otomatik yukseltilir"},{icon:"🏨",label:"Otel",text:"Concierge.key invite: ozel otel suite, VIP deneyimler, stadyum lojlari"},{icon:"🚗",label:"Arac",text:"Avis Presidents Club + Hertz Gold + National Executive"}]}
+  ],
+  "mileageplus": [
+    {name:"Premier Silver", color:"#9a9a94", details:[
+      {icon:"🧳", label:"Bagaj", text:"1 ucretsiz kontrol bagaji (United ve partner ucuslarda)"},
+      {icon:"🚀", label:"Binis", text:"Grup 2 oncelikli binis"},
+      {icon:"🌍", label:"Ittifak", text:"Star Alliance Silver - 44 havayolunda temel avantajlar"},
+      {icon:"✈️", label:"Kazanim", text:"+7 kat bonus carpani"},
+      {icon:"💺", label:"Upgrade", text:"Complimentary Premier Upgrade listesine ekleme (bos varsa)"}
+    ]},
+    {name:"Premier Gold", color:"#c8a84b", details:[
+      {icon:"🧳", label:"Bagaj", text:"2 ucretsiz kontrol bagaji"},
+      {icon:"🍸", label:"Lounge", text:"Star Alliance Gold - 1.000+ lounge erisimi dunya genelinde"},
+      {icon:"🌍", label:"Ittifak", text:"Star Alliance Gold statusu - tam avantajlar"},
+      {icon:"✈️", label:"Kazanim", text:"+8 kat bonus carpani"},
+      {icon:"💺", label:"Upgrade", text:"Oncelikli upgrade listesi + PlusPoint kullanimi"},
+      {icon:"🚀", label:"Binis", text:"Grup 1 oncelikli binis"}
+    ]},
+    {name:"Premier Platinum", color:"#a0b0c0", details:[
+      {icon:"🧳", label:"Bagaj", text:"3 ucretsiz kontrol bagaji"},
+      {icon:"🎟️", label:"PlusPoints", text:"40 PlusPoint upgrade kredisi / yil - Business/First'e upgrade icin"},
+      {icon:"🚀", label:"Binis", text:"Pre-boarding hakki - kapida en once binen"},
+      {icon:"✈️", label:"Kazanim", text:"+9 kat bonus carpani"},
+      {icon:"💺", label:"Upgrade", text:"Yuksek oncelikli upgrade listesi"},
+      {icon:"🌍", label:"Ittifak", text:"Star Alliance Gold"}
+    ]},
+    {name:"Premier 1K", color:"#1a1a18", details:[
+      {icon:"🧳", label:"Bagaj", text:"3 ucretsiz kontrol bagaji + ozel bagaj teslimi onceligi"},
+      {icon:"🎟️", label:"PlusPoints", text:"280 PlusPoint upgrade kredisi / yil"},
+      {icon:"⏰", label:"Upgrade Zamani", text:"96 saat oncesinden upgrade talebinde bulunabilirsiniz (diger statuler 24-48 saat)"},
+      {icon:"✈️", label:"Kazanim", text:"Kart + 1K kombinasyonunda 17 kat mil! (sektorde en yuksek)"},
+      {icon:"📞", label:"Destek", text:"1K ozel hatti - beklemesiz, 7/24"},
+      {icon:"🎁", label:"Hediye", text:"Her yil 4 adet Premier Qualifying Flight kredi hediyesi"},
+      {icon:"🌍", label:"Ittifak", text:"Star Alliance Gold - tum avantajlar maksimum oncelikle"}
+    ]}
+  ],
+  "skywards": [
+    {name:"Blue (Temel)", color:"#5a5a56", details:[{icon:"✈️", label:"Kazanim", text:"Economy'de %25-75 Tier Miles (fare sinifina gore)"},
+      {icon:"💻", label:"Dijital", text:"Online check-in ve uygulama erisimi"},
+      {icon:"🛍️", label:"Partner", text:"Emirates Skywards Everyday ile 300+ alisveris partnerinde mil kazanimi"},{icon:"🛍️",label:"Skywards Everyday",text:"Uygulama ile 300+ partnerde mil kazanimi: AED 3 = 1 mil (market, yemek, alisveris)"},{icon:"🏨",label:"Otel",text:"Marriott Bonvoy, IHG, Jumeirah dahil 500+ otelimde Skywards mil kazanimi"},{icon:"🚗",label:"Arac",text:"Hertz, Avis, Budget, Europcar, Sixt: $1 = 5 Skywards mil"}]},
+    {name:"Silver", color:"#9a9a94", details:[{icon:"✈️", label:"Kazanim", text:"%25 bonus mil - tum Emirates ve Flydubai ucuslarinda"},
+      {icon:"🚀", label:"Binis", text:"Oncelikli binis"},
+      {icon:"💺", label:"Koltuk", text:"Ucretsiz koltuk secimi (premium koltuklarda bile)"},
+      {icon:"🧳", label:"Fazla Bagaj", text:"Bagaj kotasinda ek tolerans"},
+      {icon:"📞", label:"Destek", text:"Oncelikli telefon hizmetleri hatti"},{icon:"🏨",label:"Otel",text:"Season of Rewards (Mayis-Agustos 2026): Marriott/IHG/Jumeirah konaklamalarda %50 bonus mil"},{icon:"🚗",label:"Arac",text:"Season of Rewards: Hertz/Avis/Budget/Sixt araclarda %50 bonus Skywards mil"},{icon:"✈️",label:"Tier Hizlandirma",text:"Season of Rewards: tum ucuslarda %20 ekstra Tier Miles (31 Agustos 2026'ya kadar)"},{icon:"🏨",label:"Otel",text:"IHG One Rewards Silver Elite statusu (Privilege Club ortakligi ile otomatik)"},{icon:"🚗",label:"Arac",text:"Europcar Privilege statusu + %10 kiralama indirimi + bonus Avios"},{icon:"🏨",label:"Otel",text:"Accor Live Limitless Silver statusu — Flying Blue ortakligi ile otomatik"},{icon:"🚗",label:"Arac",text:"Europcar Privilege statusu + %10 indirim + bonus XP"},{icon:"🏨",label:"Otel",text:"Hotels.com Silver: ucretsiz gece kazanimi (10 gecede 1) + Avios entegrasyonu"},{icon:"🚗",label:"Arac",text:"Avis Presidents Club + Budget Fastbreak Gold"}]},
+    {name:"Gold", color:"#c8a84b", details:[
+      {icon:"🍸", label:"Lounge", text:"Emirates Business Lounge erisimi - tum Emirates lounge'lari"},
+      {icon:"🧳", label:"Ekstra Bagaj", text:"Economy'de +20kg ekstra bagaj hakki"},
+      {icon:"✈️", label:"Kazanim", text:"%50 bonus mil"},
+      {icon:"💺", label:"Upgrade", text:"Ucus gununde bos varsa Business'a upgrade onceligi"},
+      {icon:"🌍", label:"Partner", text:"Secili partner havayollarinda Gold avantajlari"},
+      {icon:"🚀", label:"Binis", text:"Oncelikli check-in ve binis"},
+      {icon:"🛒", label:"Alisveris", text:"Duty free'de %10 indirim"},
+    ]},
+    {name:"Platinum", color:"#4fc3f7", details:[
+      {icon:"👑", label:"First Lounge", text:"Emirates First Class Lounge erisimi - her zaman, her ucusta"},
+      {icon:"✈️", label:"Kazanim", text:"%100 bonus mil - kazanimi iki katina cikarir"},
+      {icon:"🎯", label:"Concierge", text:"Kisisel concierge servisi - 7/24 ozel asistan"},
+      {icon:"💺", label:"Upgrade Onceligi", text:"En yuksek upgrade onceligi - dolu ucuslarda bile ilk sirada"},
+      {icon:"🧳", label:"Ekstra Bagaj", text:"Economy'de +30kg ekstra bagaj hakki"},
+      {icon:"🌐", label:"WiFi", text:"Ucuslarda ucretsiz premium WiFi"},
+      {icon:"🎁", label:"Ozel Hediye", text:"Yillik Platinum hediye paketi - Platinum uyelere ozel suvenirler"}
+    ]}
+  ],
+  "privilege": [
+    {name:"Burgundy (Temel)", color:"#6d0e37", details:[
+      {icon:"✈️", label:"Kazanim", text:"Economy'de %25-100 Avios (fare sinifina gore)"},
+      {icon:"🌐", label:"Avios", text:"BA, Iberia, Finnair ve Aer Lingus ile 1:1 Avios transferi"},
+      {icon:"💻", label:"Dijital", text:"Online check-in ve ozel tekliflere erisim"}
+    ]},
+    {name:"Silver", color:"#9a9a94", details:[
+      {icon:"🚀", label:"Binis", text:"Oncelikli binis ve check-in"},
+      {icon:"💺", label:"Koltuk", text:"Ucretsiz koltuk secimi (premium koltuklarda bile)"},
+      {icon:"🌍", label:"Ittifak", text:"Oneworld Ruby - 13 havayolunda temel avantajlar"},
+      {icon:"✈️", label:"Kazanim", text:"%25 bonus Avios + Qpoints birikimi"},
+      {icon:"📞", label:"Destek", text:"Oncelikli telefon servisi"}
+    ]},
+    {name:"Gold", color:"#c8a84b", details:[
+      {icon:"🍸", label:"Lounge", text:"Qatar Airways Business Lounge erisimi - dunya genelinde"},
+      {icon:"🧳", label:"Bagaj", text:"1 ekstra kontrol bagaji"},
+      {icon:"🌍", label:"Ittifak", text:"Oneworld Sapphire - tum Oneworld lounge'larina erisim"},
+      {icon:"✈️", label:"Kazanim", text:"%50 bonus Avios"},
+      {icon:"🚀", label:"Binis", text:"Oncelikli binis ve check-in"},
+      {icon:"💺", label:"Upgrade", text:"Miles ile upgrade talep etme hakki"}
+    ]},
+    {name:"Platinum", color:"#4fc3f7", details:[
+      {icon:"👑", label:"Al Mourjan Lounge", text:"First Class Al Mourjan Lounge erisimi - dunyanin en iyi lounge'larindan biri"},
+      {icon:"🎯", label:"Concierge", text:"Kisisel concierge hizmeti - 7/24"},
+      {icon:"🌍", label:"Ittifak", text:"Oneworld Emerald - First Class lounge erisimi her havalimaninda"},
+      {icon:"✈️", label:"Kazanim", text:"%75 bonus Avios"},
+      {icon:"💺", label:"Qsuite Erisimi", text:"Qsuite award envanterine oncelikli erisim"},
+      {icon:"🧳", label:"Bagaj", text:"2 ekstra kontrol bagaji"},
+      {icon:"🎁", label:"Surprise", text:"Ucus oncesi ve sonrasi ozel Platinum hizmet paketi"}
+    ]}
+  ],
+  "flyingblue": [
+    {name:"Explorer (Temel)", color:"#5a5a56", details:[
+      {icon:"✈️", label:"Kazanim", text:"AF/KLM ucuslarinda €1 = 4-6 mil"},
+      {icon:"🌐", label:"Promo Awards", text:"Aylik Promo Awards indirimli biletlere erisim"},
+      {icon:"💻", label:"Dijital", text:"Flying Blue uygulama ve online erisim"}
+    ]},
+    {name:"Silver", color:"#9a9a94", details:[
+      {icon:"✈️", label:"Kazanim", text:"%25 bonus mil - tum uygun AF/KLM ucuslarinda"},
+      {icon:"💺", label:"Koltuk", text:"Ucretsiz koltuk secimi (Economy Comfort dahil)"},
+      {icon:"🌍", label:"Ittifak", text:"SkyTeam Elite - 19 havayolunda avantajlar"},
+      {icon:"🚀", label:"Binis", text:"Oncelikli binis"},
+      {icon:"📞", label:"Destek", text:"Oncelikli musteri hizmetleri"}
+    ]},
+    {name:"Gold", color:"#c8a84b", details:[
+      {icon:"🍸", label:"Lounge", text:"Air France/KLM lounge erisimi + 1 misafir konuklama"},
+      {icon:"🧳", label:"Bagaj", text:"1 ekstra kontrol bagaji"},
+      {icon:"🌍", label:"Ittifak", text:"SkyTeam Elite Plus - tum SkyTeam lounge erisimi"},
+      {icon:"✈️", label:"Kazanim", text:"%50 bonus mil"},
+      {icon:"💺", label:"Upgrade", text:"Ucus gununun bos Business koltuklarina upgrade onceligi"},
+      {icon:"🚀", label:"Binis", text:"Oncelikli binis ve check-in"}
+    ]},
+    {name:"Platinum", color:"#4fc3f7", details:[
+      {icon:"🍸", label:"First Lounge", text:"First Class lounge erisimi (Air France La Premiere Lounge dahil)"},
+      {icon:"✈️", label:"Kazanim", text:"%75 bonus mil - maksimum XP birikimi"},
+      {icon:"🌍", label:"Ittifak", text:"SkyTeam Elite Plus - en yuksek oncelik"},
+      {icon:"🎯", label:"Ozel Hat", text:"Platinum ozel telefon hatti - beklemesiz"},
+      {icon:"💺", label:"Upgrade Onceligi", text:"En yuksek upgrade onceligi listesi"},
+      {icon:"🧳", label:"Bagaj", text:"2 ekstra kontrol bagaji + agirlik bonusu"},
+      {icon:"🎁", label:"XP Bonus", text:"Yillik XP birikiminde ek bonus - statusu daha kolay yenile"}
+    ]}
+  ],
+  "krisflyer": [
+    {name:"KrisFlyer (Temel)", color:"#5a5a56", details:[
+      {icon:"✈️", label:"Kazanim", text:"Economy Saver'da %25 mil, Business'te %100 mil"},
+      {icon:"🌐", label:"Partner", text:"500+ partner ile mil kazanimi (otel, arac, alisveris)"},
+      {icon:"💻", label:"App", text:"KrisFlyer dijital uygulama ve award arama"}
+    ]},
+    {name:"Elite Silver", color:"#9a9a94", details:[
+      {icon:"✈️", label:"Kazanim", text:"%25 bonus mil - tum uygun SQ ucuslarinda"},
+      {icon:"🚀", label:"Binis", text:"Oncelikli check-in ve binis"},
+      {icon:"🌍", label:"Ittifak", text:"Star Alliance Silver - 44 havayolunda avantajlar"},
+      {icon:"📞", label:"Destek", text:"Oncelikli telefon hizmetleri"}
+    ]},
+    {name:"Elite Gold", color:"#c8a84b", details:[{icon:"🍸", label:"Lounge", text:"SilverKris Lounge erisimi - dunya genelinde secili lounge'lar"},
+      {icon:"🌍", label:"Ittifak", text:"Star Alliance Gold - 1.000+ lounge erisimi"},
+      {icon:"✈️", label:"Kazanim", text:"%50 bonus mil"},
+      {icon:"💺", label:"Upgrade", text:"Seatplus ile ucuz upgrade + waitlist onceligi"},
+      {icon:"🧳", label:"Bagaj", text:"1 ekstra kontrol bagaji"},
+      {icon:"🚀", label:"Binis", text:"Oncelikli binis - First Class kapisindan giris"},
+      {icon:"🛒", label:"Duty Free", text:"Singapore Airlines duty free'de VIP indirim"},{icon:"🏨",label:"Otel",text:"Accor Gold statusu + KrisFlyer Hotels'de VIP Check-in + F&B kredisi + bonus mil"},{icon:"🚗",label:"Arac",text:"Hertz Presidents Circle + ozel premium arac yukseltme hakki"},{icon:"🛒",label:"KrisShop",text:"Singapore Airlines KrisShop duty free'de Gold oncelikli alisveris + ekstra mil"},{icon:"🎟️",label:"SeatPlus",text:"Ucuz kabin yukseltme: Economy -> Premium Economy veya Business Class"}]},
+    {name:"PPS Club", color:"#8b4513", details:[{icon:"👑", label:"First/Suites Erisimi", text:"Singapore Airlines Suites ve First Class award envanterine ozel erisim"},
+      {icon:"🍸", label:"First Lounge", text:"SilverKris First Class Lounge - dunya genelinde her zaman"},
+      {icon:"🎯", label:"Kisisel Servis", text:"Dedicated PPS Club servisi - kisisel ucus asistani"},
+      {icon:"✈️", label:"Kazanim", text:"En yuksek carpan + PPS Club ozel mil bonuslari"},
+      {icon:"💺", label:"Suite Upgrade", text:"Suites upgrade listesinde en yuksek oncelik"},
+      {icon:"🎁", label:"Ozel Ikramlar", text:"Ucusta ozel yemek menusu, kisisel karsilama, ozel bagaj teslimi"},
+      {icon:"🌐", label:"Dunya Geneli", text:"Tum Star Alliance Gold avantajlari + PPS Club premium katmani"},{icon:"👑",label:"Kisisel Asistan",text:"Dedicated PPS Club yoneticisi: ucus, otel, transfer tek noktadan planlama"},{icon:"🏨",label:"Otel",text:"Singapore Airlines partner otellerde VIP konuk + suite garantisi + ozel karsilama"},{icon:"🚗",label:"Arac",text:"Changi Chauffeur servisi: Singapore'da arrivals/departures icin ozel sofor"},{icon:"🍽️",label:"Fine Dining",text:"SilverKris First Lounge: a-la-carte menu + sommelier + ozel spa"},{icon:"🎁",label:"Surprizler",text:"Ucus oncesi VIP karsilama + premium hediye + T3 Singapore'da ucretsiz spa"}]}
+  ],
+  "aeroplan": [
+    {name:"25K", color:"#9a9a94", details:[
+      {icon:"🚀", label:"Binis", text:"Oncelikli binis ve check-in"},
+      {icon:"💺", label:"Koltuk", text:"Ucretsiz koltuk secimi (Preferred koltuklarda bile)"},
+      {icon:"🌍", label:"Ittifak", text:"Star Alliance Silver - 44 havayolunda temel avantajlar"},
+      {icon:"📞", label:"Destek", text:"Oncelikli telefon hizmetleri"}
+    ]},
+    {name:"35K", color:"#c8a84b", details:[
+      {icon:"🍸", label:"Lounge", text:"Air Canada Maple Leaf Lounge + Star Alliance Gold lounge'lari"},
+      {icon:"🧳", label:"Bagaj", text:"2 ekstra kontrol bagaji"},
+      {icon:"🌍", label:"Ittifak", text:"Star Alliance Gold - 1.000+ premium lounge"},
+      {icon:"✈️", label:"Kazanim", text:"Ekstra Aeroplan puan bonusu"},
+      {icon:"💺", label:"Upgrade", text:"Complimentary upgrade listesine ekleme"}
+    ]},
+    {name:"50K", color:"#a0b0c0", details:[{icon:"💺", label:"Upgrade Kuponu", text:"Yillik Upgrade Rewards - Business Class'a ucretli upgrade hakki"},
+      {icon:"🍸", label:"Lounge", text:"Maple Leaf Lounge + misafir erisimi"},
+      {icon:"🎟️", label:"Complimentary", text:"Complimentary Premier Upgrade listesine daha yuksek oncelikle ekleme"},
+      {icon:"🧳", label:"Bagaj", text:"3 kontrol bagaji + agirlik bonusu"},
+      {icon:"📞", label:"Destek", text:"Yuksek oncelikli telefon hatti"},{icon:"🏨",label:"Otel",text:"Aeroplan Hotels 50K: VIP Check-in + F&B kredisi + ucretsiz bagaj saklama"},{icon:"🚗",label:"Arac",text:"Avis Presidents Club + ucretsiz arac sinif yukseltme + National Emerald"},{icon:"🎟️",label:"Upgrade",text:"Complimentary Upgrade Rewards: Business Class'a ucretli upgrade kuponu"}]},
+    {name:"75K / Super Elite", color:"#c8a84b", details:[{icon:"🍸", label:"Lounge", text:"Maple Leaf Lounge - 6 misafir konuklama hakki + sinirsiz kisisel giris"},
+      {icon:"✈️", label:"Kazanim", text:"En yuksek Aeroplan puan carpani + bonus Status Qualifying Miles"},
+      {icon:"💺", label:"Upgrade", text:"En yuksek upgrade onceligi - dolu ucuslarda bile ilk sirada"},
+      {icon:"🎁", label:"Ozel Hizmet", text:"Kisisel Super Elite hat - saniyeler icinde yanit"},
+      {icon:"🧳", label:"Bagaj", text:"4 ucretsiz kontrol bagaji + ozel bagaj teslimi"},
+      {icon:"🌍", label:"Ittifak", text:"Star Alliance Gold - maksimum oncelikle"},
+      {icon:"🎟️", label:"Companion", text:"Yillik Companion Pass firsati - secili rotalarda 1 ucretsiz refakatci"},{icon:"🏨",label:"Otel",text:"Aeroplan Luxury Hotels: Conrad, Park Hyatt, Ritz-Carlton — VIP statusu + welcome amenity"},{icon:"🚗",label:"Arac",text:"Avis Presidents Club + National Executive Elite + Hertz Presidents Circle"},{icon:"👑",label:"Concierge",text:"Super Elite ozel hatti: 7/24, sifir bekleme, kisisel seyahat yoneticisi atanir"},{icon:"🎟️",label:"Companion",text:"Companion Pass firsati: secili rotalarda 1 kisi ucretsiz ucabilir (kampanya donemlerinde)"}]}
+  ],
+  "avios": [
+    {name:"Blue (Temel)", color:"#5a5a56", details:[
+      {icon:"✈️", label:"Kazanim", text:"Economy'de %25-100 Avios/mil (fare sinifina gore)"},
+      {icon:"🌐", label:"IAG", text:"Avios: BA, Qatar, Iberia, Finnair, Aer Lingus arasi 1:1 transfer"},
+      {icon:"💻", label:"App", text:"Executive Club uygulama ve Avios arama"}
+    ]},
+    {name:"Bronze", color:"#cd7f32", details:[
+      {icon:"✈️", label:"Kazanim", text:"%25 bonus Avios - tum uygun BA ucuslarinda"},
+      {icon:"🚀", label:"Binis", text:"Oncelikli binis"},
+      {icon:"💺", label:"Koltuk", text:"Ucretsiz koltuk secimi (Economy'de)"}
+    ]},
+    {name:"Silver", color:"#9a9a94", details:[
+      {icon:"🍸", label:"Lounge", text:"BA Business Lounge + 1 misafir erisimi (BA operasyonlu ucuslarda)"},
+      {icon:"✈️", label:"Kazanim", text:"%50 bonus Avios"},
+      {icon:"🌍", label:"Ittifak", text:"Oneworld Sapphire - 13 havayolunda lounge erisimi"},
+      {icon:"🚀", label:"Binis", text:"Oncelikli check-in ve binis"},
+      {icon:"💺", label:"Upgrade", text:"Avios ile upgrade talep etme hakki"}
+    ]},
+    {name:"Gold", color:"#c8a84b", details:[
+      {icon:"👑", label:"First Lounge", text:"BA First Class Lounge erisimi - Heathrow'daki efsanevi lounge"},
+      {icon:"✈️", label:"Kazanim", text:"%100 bonus Avios - kazanimi iki katina cikarir"},
+      {icon:"🌍", label:"Ittifak", text:"Oneworld Emerald - First Class lounge tum havalimanlarinda"},
+      {icon:"💺", label:"Upgrade Onceligi", text:"En yuksek Business/First upgrade onceligi"},
+      {icon:"🧳", label:"Bagaj", text:"3 kontrol bagaji"},
+      {icon:"📞", label:"Destek", text:"Gold ozel hatti - 7/24, beklemesiz"},
+      {icon:"🎟️", label:"Companion", text:"Gold Upgrade Voucher - Business Class'a ucretsiz upgrade"}
+    ]}
+  ],
+  "qff": [
+    {name:"Bronze", color:"#cd7f32", details:[
+      {icon:"✈️", label:"Kazanim", text:"Qantas ucuslarinda Status Credits kazanimi basliyor"},
+      {icon:"🌐", label:"Partner", text:"Woolworths, otel, arac ve 400+ partnerde Qantas Points"},
+      {icon:"💻", label:"App", text:"Qantas uygulama ve award arama"}
+    ]},
+    {name:"Silver", color:"#9a9a94", details:[
+      {icon:"🚀", label:"Binis", text:"Oncelikli check-in ve binis"},
+      {icon:"💺", label:"Koltuk", text:"Ucretsiz koltuk secimi"},
+      {icon:"🌍", label:"Ittifak", text:"Oneworld Ruby - temel avantajlar"},
+      {icon:"📞", label:"Destek", text:"Oncelikli telefon hizmetleri"},
+      {icon:"🎟️", label:"Lounge Daveti", text:"Ekstra lounge davetiyesi (2026 yeni avantaji)"}
+    ]},
+    {name:"Gold", color:"#c8a84b", details:[
+      {icon:"🍸", label:"Lounge", text:"Qantas Club Lounge erisimi - Avustralya ve secili uluslararasi"},
+      {icon:"🧳", label:"Bagaj", text:"2 ekstra kontrol bagaji"},
+      {icon:"🌍", label:"Ittifak", text:"Oneworld Sapphire - 13 havayolunda lounge"},
+      {icon:"💺", label:"Upgrade", text:"Classic Upgrade Rewards - Business'a upgrade firsati"},
+      {icon:"🎁", label:"Yeni 2026", text:"Qantas Hotels ve Holidays'de ozel indirimler + Qantas Wine VIP"}
+    ]},
+    {name:"Platinum", color:"#a0b0c0", details:[
+      {icon:"🍸", label:"First Lounge", text:"Qantas First Class Lounge + The Qantas Club dunya genelinde"},
+      {icon:"🎟️", label:"Upgrade Kuponu", text:"Yillik upgrade kuponlari - Business ve First'e upgrade"},
+      {icon:"🌍", label:"Ittifak", text:"Oneworld Emerald - First Class lounge her yerde"},
+      {icon:"✈️", label:"Kazanim", text:"En yuksek Status Credit carpani"},
+      {icon:"🧳", label:"Bagaj", text:"3 ekstra kontrol bagaji + agirlik bonusu"},
+      {icon:"🎁", label:"Yeni 2026", text:"Lifetime Gold icin her 10.000 SC'de 1 yil ucretsiz Platinum"}
+    ]},
+    {name:"Platinum One", color:"#8b4513", details:[{icon:"👑", label:"Davetiye", text:"Sadece davetiye ile - yilda 3.600 SC gerekli"},
+      {icon:"🎯", label:"Kisisel Asistan", text:"Dedicated Platinum One servisi - kisisel ucus asistani"},
+      {icon:"💺", label:"Upgrade", text:"En yuksek oncelik - her ucusta upgrade garantisi gibi"},
+      {icon:"🍸", label:"Lounge", text:"Sinirsiz First Class Lounge + misafir erisimi"},
+      {icon:"🌐", label:"Gizli Avantaj", text:"Yayinlanmayan ekstra avantajlar - Qantas Platinum One surprizleri"},
+      {icon:"📞", label:"Ozel Hat", text:"Direkt Platinum One hatti - sifir bekleme"},{icon:"👑",label:"Kisisel Takim",text:"Dedicated Platinum One servis takimi: 7/24, sifir bekleme, kisisel yonetici"},{icon:"🏨",label:"Otel",text:"Park Hyatt, Rosewood, Four Seasons — Qantas Luxury Collection VIP statusu + suite"},{icon:"🚗",label:"Arac",text:"Private chauffeur servisi: tum seyahatlerde ozel sofor transferi"},{icon:"🎁",label:"Gizli Avantaj",text:"Yayinlanmayan ayricaliklar: ozel etkinlik daveti, stadyum lofu, limited edition hediye"}]}
+  ],
+  "milesmore": [
+    {name:"Frequent Traveller", color:"#9a9a94", details:[
+      {icon:"🚀", label:"Binis", text:"Oncelikli binis ve check-in - Lufthansa, SWISS, Austrian, Brussels"},
+      {icon:"💺", label:"Koltuk", text:"Ucretsiz koltuk secimi (Economy'de)"},
+      {icon:"🌍", label:"Ittifak", text:"Star Alliance Silver - 44 havayolunda temel avantajlar"},
+      {icon:"✈️", label:"Kazanim", text:"Bonus mil carpani aktif"}
+    ]},
+    {name:"Senator", color:"#c8a84b", details:[{icon:"🍸", label:"Lounge", text:"Lufthansa Business Lounge + Star Alliance Gold lounge'lari dunya genelinde"},
+      {icon:"🧳", label:"Bagaj", text:"2 ekstra kontrol bagaji"},
+      {icon:"🌍", label:"Ittifak", text:"Star Alliance Gold - 1.000+ premium lounge"},
+      {icon:"✈️", label:"Kazanim", text:"Yuksek bonus mil carpani"},
+      {icon:"💺", label:"Upgrade", text:"Ucus gununde bos Business koltuklarina upgrade onceligi"},
+      {icon:"🚀", label:"Binis", text:"Oncelikli binis ve fast track guvenik"},
+      {icon:"📞", label:"Destek", text:"Senator ozel hatti"},{icon:"🏨",label:"Otel",text:"Miles & More Hotels Senator: oda yukseltme + gec check-out + ucretsiz kahvalti"},{icon:"🚗",label:"Arac",text:"Sixt Platinum statusu + Hertz Presidents Circle — ikisi birden"},{icon:"✈️",label:"FCT",text:"Frankfurt First Class Terminal: ozel limuzin + kisisel asistan + a-la-carte"}]},
+    {name:"HON Circle", color:"#8b4513", details:[{icon:"👑", label:"First Class Lounge", text:"Lufthansa First Class Lounge - daha buyuk ayricalik - her ucusta, her havalimaninda"},
+      {icon:"🎯", label:"Kisisel Yonetici", text:"Kisisel HON Circle yoneticisi - dogrudan hat, kisisel planlama"},
+      {icon:"✈️", label:"Kazanim", text:"En yuksek mil carpani (%200 First Class bonus ile 4 kat kadar)"},
+      {icon:"💺", label:"Upgrade Garantisi", text:"First Class upgrade listesinde en yuksek oncelik"},
+      {icon:"🧳", label:"Bagaj", text:"3 ekstra kontrol bagaji + ozel HON Circle bagaj etiketi"},
+      {icon:"🌍", label:"Ittifak", text:"Star Alliance Gold - maksimum avantajlarla"},
+      {icon:"🎁", label:"HON Hediye", text:"Yillik HON Circle ozel hediye paketi - deri pasaport kilifi, ozel notlar"},
+      {icon:"🤝", label:"Davet Etme", text:"Yakin kisiye HON Circle avantajlarini gecici olarak aktarma hakki"},{icon:"👑",label:"First Terminal",text:"Frankfurt First Class Terminal (FCT): limuzin + kisisel asistan + ozel suite"},{icon:"🏨",label:"Otel",text:"Lufthansa City Center otellerde Presidential Suite + butler + VIP amenity"},{icon:"🚗",label:"Arac",text:"Sixt Platinum + Mercedes/BMW private chauffeur servisi"},{icon:"🤝",label:"Konuk Devri",text:"HON Circle ayricaliklari gecici olarak yakin bir kisiye aktarma hakki"},{icon:"🎁",label:"HON Pack",text:"Yillik hediye paketi: deri pasaport kilifi, ozel notlar, surpriz unvan"}]}
+  ],
+  "asiamiles": [
+    {name:"Green (Temel)", color:"#5a5a56", details:[
+      {icon:"✈️", label:"Kazanim", text:"Economy Saver'da %25 Asia Miles, Business'te %100"},
+      {icon:"🌐", label:"Partner", text:"Marriott, Hilton ve 700+ partnerde mil kazanimi"},
+      {icon:"💻", label:"App", text:"Asia Miles uygulama ve award arama"}
+    ]},
+    {name:"Silver (Marco Polo)", color:"#9a9a94", details:[
+      {icon:"✈️", label:"Kazanim", text:"%25 bonus Asia Miles"},
+      {icon:"💺", label:"Koltuk", text:"Ucretsiz koltuk secimi"},
+      {icon:"🌍", label:"Ittifak", text:"Oneworld Ruby - temel avantajlar"},
+      {icon:"🚀", label:"Binis", text:"Oncelikli binis"}
+    ]},
+    {name:"Gold (Marco Polo)", color:"#c8a84b", details:[{icon:"🍸", label:"Lounge", text:"The Wing/The Pier Business Lounge Hong Kong + Oneworld lounge"},
+      {icon:"🌍", label:"Ittifak", text:"Oneworld Sapphire - 13 havayolunda lounge erisimi"},
+      {icon:"✈️", label:"Kazanim", text:"%50 bonus Asia Miles"},
+      {icon:"💺", label:"Upgrade", text:"Miles ile ucretli upgrade talep etme"},
+      {icon:"🧳", label:"Bagaj", text:"1 ekstra kontrol bagaji"},
+      {icon:"🚀", label:"Binis", text:"Oncelikli check-in ve binis"},{icon:"🏨",label:"Otel",text:"Marco Polo Hotels Gold: suite yukseltme + F&B kredisi + gec check-out + breakfast"},{icon:"🚗",label:"Arac",text:"Hertz Presidents Circle + ozel premium arac sinif yukseltme"},{icon:"🛒",label:"CityPlus",text:"Hong Kong'da CityPlus kart ile gunluk harcamalardan Asia Miles kazanimi"}]},
+    {name:"Diamond (Marco Polo)", color:"#4fc3f7", details:[{icon:"👑", label:"First Class Lounge", text:"The Wing First Class Lounge Hong Kong - efsanevi spa ve restaurant"},
+      {icon:"✈️", label:"Kazanim", text:"%100 bonus Asia Miles - en yuksek carpan"},
+      {icon:"🌍", label:"Ittifak", text:"Oneworld Emerald - First Class lounge her havalimaninda"},
+      {icon:"💺", label:"Upgrade Onceligi", text:"En yuksek upgrade onceligi - bos varsa garantiye yakin"},
+      {icon:"🧳", label:"Bagaj", text:"3 ekstra kontrol bagaji"},
+      {icon:"📞", label:"Destek", text:"Diamond ozel hatti - 7/24 beklemesiz"},
+      {icon:"🎁", label:"Ozel Ikram", text:"Ucusta kisisel karsilama, ozel yemek ve hediye"},{icon:"👑",label:"First Lounge",text:"The Wing First Class Lounge + The Pier First Lounge: spa + fine dining + sommelier"},{icon:"🏨",label:"Otel",text:"Marco Polo Diamond: Presidential Suite + kisisel butler servisi + welcome hamper"},{icon:"🚗",label:"Arac",text:"Limuzin karsilama: HKG arrivals'ta ozel sofor servisi — hic bagaj beklemeden"},{icon:"🛍️",label:"Duty Free",text:"HK havalimaninda Diamond VIP odasi + kisisel alisveris asistani"}]}
+  ],
+  "mileageplan": [
+    {name:"MVP", color:"#00805d", details:[
+      {icon:"🧳", label:"Bagaj", text:"1 ucretsiz kontrol bagaji (Alaska ve partner ucuslarda)"},
+      {icon:"🚀", label:"Binis", text:"Oncelikli binis"},
+      {icon:"🌍", label:"Ittifak", text:"Oneworld Ruby - 13 havayolunda temel avantajlar"},
+      {icon:"📞", label:"Destek", text:"Oncelikli telefon hizmetleri"},
+      {icon:"💺", label:"Upgrade", text:"Standby upgrade listesine ekleme"}
+    ]},
+    {name:"MVP Gold", color:"#c8a84b", details:[{icon:"🍸", label:"Lounge", text:"Alaska Lounge erisimi + Oneworld Gold lounge'lari"},
+      {icon:"🌍", label:"Ittifak", text:"Oneworld Sapphire - tum Oneworld Business lounge"},
+      {icon:"💺", label:"Upgrade", text:"Ucus gununde otomatik First Class upgrade (bos varsa)"},
+      {icon:"🧳", label:"Bagaj", text:"2 ucretsiz kontrol bagaji"},
+      {icon:"✈️", label:"Kazanim", text:"Yuksek mil carpani + Milestone Rewards"},
+      {icon:"🎟️", label:"Companion Fare", text:"Yillik Companion Fare - refakatciye ucuz bilet hakki"},{icon:"🏨",label:"Otel",text:"Alaska Hotels Gold: oda yukseltme + erken check-in + bonus mil"},{icon:"🚗",label:"Arac",text:"National Emerald Elite + Avis Presidents Club (ikisi birden otomatik)"},{icon:"🎟️",label:"Companion Fare",text:"Yillik Companion Fare: ayni ucusta refakatciye 99 dolar + vergi (Business dahil secili rotalarda)"}]},
+    {name:"MVP Gold 75K", color:"#8b4513", details:[{icon:"💺", label:"Anlik Upgrade", text:"Bos First Class koltuklara aninda otomatik upgrade - en guvenilir ABD programi"},
+      {icon:"🍸", label:"Lounge", text:"Sinirsiz Alaska Lounge + Oneworld Emerald First Class lounge"},
+      {icon:"🌍", label:"Ittifak", text:"Oneworld Emerald - her yerde First Class lounge"},
+      {icon:"✈️", label:"Kazanim", text:"En yuksek Mileage Plan carpani + ekstra Milestone Rewards"},
+      {icon:"🧳", label:"Bagaj", text:"3 ucretsiz kontrol bagaji"},
+      {icon:"🎟️", label:"Companion Fare", text:"Premium Companion Fare + ucretsiz refakatci firsati"},
+      {icon:"📞", label:"Destek", text:"75K ozel hatti - saniyeler icinde yanit"},{icon:"💺",label:"Anlik Upgrade",text:"First Class'a anlik otomatik upgrade (bos varsa) — ABD'nin en guvenilir upgrade sistemi"},{icon:"🏨",label:"Otel",text:"Alaska Luxury Hotels (Four Seasons, Ritz, Waldorf): ozel Gold konuk statusu + suite"},{icon:"🚗",label:"Arac",text:"National Executive Elite + Hertz Presidents Circle + Avis Presidents Club (uc birden)"},{icon:"🎟️",label:"Premium Companion",text:"Premium Companion Fare + secili kampanyalarda 1 kisi ucretsiz"},{icon:"👑",label:"Concierge",text:"75K ozel hatti: saniyeler icinde yanit, kisisel seyahat yoneticisi atanir"}]}
+  ],
+  "rapidrewards": [
+    {name:"A-List", color:"#304cb2", details:[
+      {icon:"🚀", label:"Binis", text:"Oncelikli check-in ve binis - A grubu garantisi"},
+      {icon:"✈️", label:"Kazanim", text:"%25 bonus puan - tum uygun Southwest ucuslarinda"},
+      {icon:"🔄", label:"Standby", text:"Ucretiz same-day standby - bos koltuk varsa aninda"},
+      {icon:"📞", label:"Destek", text:"Oncelikli telefon hizmetleri"}
+    ]},
+    {name:"A-List Preferred", color:"#c8a84b", details:[{icon:"📶", label:"WiFi", text:"Tum Southwest ucuslarinda ucretsiz inflight WiFi (buyuk avantaj!)"},
+      {icon:"✈️", label:"Kazanim", text:"%100 bonus puan - kazanimi iki katina cikarir"},
+      {icon:"🚀", label:"Binis", text:"Oncelikli check-in ve binis - A grubunun basi"},
+      {icon:"🔄", label:"Standby", text:"Ucretsiz same-day standby ile esnek seyahat"},
+      {icon:"📞", label:"Destek", text:"A-List Preferred ozel hatti"},{icon:"📶",label:"WiFi",text:"TUM Southwest ucuslarinda ucretsiz inflight WiFi — A-List Preferred exclusive"},{icon:"🏨",label:"Otel",text:"Southwest Hotels Preferred: oncelikli fiyat garantisi"},{icon:"🚗",label:"Arac",text:"Hertz Five Star + National Emerald Club statusu"}]},
+    {name:"Companion Pass", color:"#ff6b35", details:[{icon:"👫", label:"Ucretsiz Refakatci", text:"Secilenin her Southwest ucusunda ucretsiz ucmasi - yil sonuna kadar"},
+      {icon:"✈️", label:"Kapsam", text:"Tum Southwest destinasyonlari - ucret ve vergi disinda ucretsiz"},
+      {icon:"🔄", label:"Degisiklik", text:"Refakatciyi yilda 2 kez degistirme hakki"},
+      {icon:"💰", label:"Deger", text:"Ikinci kisinin tum ucuslarini kapsadi - yillik deger cok yuksek"},
+      {icon:"🎯", label:"Kazanma", text:"Takvim yilinda 135.000 puan biriktirilmesini gerektiriyor"},{icon:"👫",label:"Refakatci",text:"Yil sonuna kadar 1 secilen kisi HER ucusta ucretsiz ucabilir (vergi haric)"},{icon:"🔄",label:"Degisiklik",text:"Refakatciyi yilda 2 kez degistirme hakki — esnek planlama"},{icon:"🌟",label:"Muazzam Deger",text:"Takvim yilina kadar gec yazilirsa 24 aya yakin gecerlilik: ikinci kisinin TUM biletleri ucretsiz"}]}
+  ],
+  "lifemiles": [
+    {name:"Red Plus", color:"#d62a2a", details:[
+      {icon:"🍸", label:"Lounge", text:"1 yillik lounge erisimi hediyesi (kayit ile)"},
+      {icon:"💺", label:"Koltuk", text:"Ucretsiz koltuk secimi"},
+      {icon:"✈️", label:"Kazanim", text:"Harcama bazli mil kazanimi baslar"}
+    ]},
+    {name:"Silver", color:"#9a9a94", details:[
+      {icon:"✈️", label:"Kazanim", text:"%25 bonus mil"},
+      {icon:"🎟️", label:"Upgrade", text:"6 upgrade kuponu / yil - Avianca Business'a upgrade"},
+      {icon:"🌍", label:"Ittifak", text:"Star Alliance Silver - 44 havayolunda temel avantajlar"},
+      {icon:"💺", label:"Koltuk", text:"Ucretsiz koltuk secimi"},
+      {icon:"🚀", label:"Binis", text:"Oncelikli binis"}
+    ]},
+    {name:"Gold", color:"#c8a84b", details:[
+      {icon:"🍸", label:"Lounge", text:"Avianca VIP Lounge erisimi + Star Alliance Gold lounge"},
+      {icon:"✈️", label:"Kazanim", text:"%75 bonus mil - kayda deger artis"},
+      {icon:"🌍", label:"Ittifak", text:"Star Alliance Gold - 1.000+ lounge dunya genelinde"},
+      {icon:"💺", label:"Upgrade", text:"Daha fazla upgrade kuponu + oncelikli liste"},
+      {icon:"🧳", label:"Bagaj", text:"1 ekstra kontrol bagaji"},
+      {icon:"🚀", label:"Binis", text:"Oncelikli check-in ve binis"}
+    ]},
+    {name:"Diamond", color:"#4fc3f7", details:[{icon:"✈️", label:"Kazanim", text:"%100 bonus mil - kazanimi iki katina cikarir"},
+      {icon:"💺", label:"Upgrade Onceligi", text:"En yuksek upgrade onceligi - Avianca Business'a"},
+      {icon:"🌍", label:"Ittifak", text:"Star Alliance Gold - maksimum avantajlarla"},
+      {icon:"📞", label:"Destek", text:"Diamond ozel telefon hatti"},
+      {icon:"🧳", label:"Bagaj", text:"2 ekstra kontrol bagaji"},
+      {icon:"🎯", label:"Concierge", text:"Ozel concierge hizmetleri"},{icon:"🎯",label:"Concierge",text:"Diamond ozel concierge: 7/24 telefon hatti, ucus + otel + transfer entegre planlama"},{icon:"🏨",label:"Otel",text:"Luxury Hotels by LifeMiles: Hyatt, Marriott VIP statusu + welcome amenity"},{icon:"🚗",label:"Arac",text:"Hertz Presidents Circle + National Executive statusu"}]},
+    {name:"Club Concierge", color:"#8b4513", details:[{icon:"📱", label:"WhatsApp", text:"7/24 WhatsApp destek hatti - mesajla aninda yardim"},
+      {icon:"🍸", label:"Lounge", text:"Sinirsiz lounge erisimi + 4 misafir konuklama hakki"},
+      {icon:"✈️", label:"Kazanim", text:"%100 bonus mil (Avianca metal ucuslarda)"},
+      {icon:"👑", label:"Ozel Hizmet", text:"Kisisel Club Concierge asistani - ucus planlama, upgrade yonetimi"},
+      {icon:"🎁", label:"Surpriz", text:"Yil boyunca Club Concierge surpriz hediyeleri ve ozel teklifler"},
+      {icon:"💺", label:"Upgrade", text:"En yuksek oncelik + ozel Business envanter erisimi"},{icon:"📱",label:"WhatsApp",text:"7/24 WhatsApp concierge — aninda yanit, bekleme yok, Ingilizce/Ispanyolca"},{icon:"🏨",label:"Otel",text:"Top LifeMiles Hotels: Presidential Suite + ozel butler + VIP welcome paketi"},{icon:"🚗",label:"Arac",text:"Latin Amerika buyuk sehirlerde ozel chauffeur servisi dahil"},{icon:"🎁",label:"Exclusives",text:"Club Concierge surprizleri: ozel etkinlik, limited edition hediye, VIP deneyimler"}]}
+  ]
+,
+"milessmiles":[
+  {name:"Classic",color:"#9a9a94",details:[
+    {icon:"✈️",label:"Kazanim",text:"Ucuslarda mesafe bazli mil kazanimi. Economy'de %25-100 mil (fare sinifina gore)."},
+    {icon:"🌍",label:"Ittifak",text:"Star Alliance — 44 havayolunda mil kazanimi ve harcamasi."},
+    {icon:"🛍️",label:"Partner",text:"BKM Express, Axess, World kart ortakliklari ile alisveristen mil kazanimi."}
+  ]},
+  {name:"Classic Plus",color:"#c8a84b",details:[
+    {icon:"✈️",label:"Kazanim",text:"%25 bonus mil — tum uygun THY ucuslarinda."},
+    {icon:"🚀",label:"Binis",text:"Oncelikli check-in ve binis hakki."},
+    {icon:"🧳",label:"Bagaj",text:"1 ekstra kontrol bagaji hakki."},
+    {icon:"🌍",label:"Ittifak",text:"Star Alliance Silver statusu."}
+  ]},
+  {name:"Elite",color:"#E30613",details:[
+    {icon:"🍸",label:"Lounge",text:"THY CIP Lounge erisimi — Istanbul ve secili uluslararasi havalimanlarinda."},
+    {icon:"🧳",label:"Bagaj",text:"2 ekstra kontrol bagaji hakki."},
+    {icon:"🌍",label:"Ittifak",text:"Star Alliance Gold statusu — 1.000+ lounge dunya genelinde."},
+    {icon:"✈️",label:"Kazanim",text:"%50 bonus mil carpani."},
+    {icon:"🚀",label:"Binis",text:"Oncelikli check-in, binis ve fast track guvenlik."},
+    {icon:"Otel",label:"Otel",text:"Secili otel partnerleri ile ekstra mil kazanimi."}
+  ]},
+  {name:"Elite Plus",color:"#1a1a18",details:[
+    {icon:"🍸",label:"Lounge",text:"Sinirsiz THY CIP Lounge erisimi + misafir erisim hakki."},
+    {icon:"💺",label:"Upgrade",text:"Ucretsiz Business Class yukseltme talep hakki (musaitlige gore)."},
+    {icon:"🧳",label:"Bagaj",text:"3 ekstra kontrol bagaji hakki."},
+    {icon:"🌍",label:"Ittifak",text:"Star Alliance Gold — maksimum avantajlar ve en yuksek oncelik."},
+    {icon:"✈️",label:"Kazanim",text:"%100 bonus mil carpani — kazanimi iki katina cikarir."},
+    {icon:"🚀",label:"Binis",text:"En oncelikli check-in, binis ve guvenlik."},
+    {icon:"Otel",label:"Otel",text:"Hertz Elite Plus statusu + secili otel VIP avantajlari."}
+  ]}
+]
+};
+var CAMPAIGNS={
+  "skymiles": [
+    {type:"kart", title:"Amex Delta Kart Giris Bonusu", detail:"Gold: 70.000+20.000 mil (6 ay, 5.000 dolar harcama). Platinum: 80.000+20.000 mil. Reserve: 100.000+25.000 mil. Bitis: 15 Temmuz 2026.", badge:"Aktif"},
+    {type:"bonus", title:"Delta & Amex 30. Yil Ozel Teklifleri", detail:"4 Haziran 2026'dan itibaren gecerli. Yeni kart uyelerine arttirilmis bonus teklifleri ve guncellenmis kart tasarimlari sunuldu.", badge:"Yeni"},
+    {type:"promosyon", title:"Delta Stays - 5X SkyMiles", detail:"Ilk Delta Stays rezervasyonunuzda 5 kat SkyMiles kazanin. 23 Agustos 2026'ya kadar gecerli.", badge:"Aktif"},
+    {type:"promosyon", title:"Medallion MQD Bonusu - Araba & Otel", detail:"Delta Cars and Stays uzerinden araba kiralama ve otel harcamalarinda 1 MQD / 1 dolar. Rezervasyon: 20 Temmuz 2026'ya kadar, Seyahat: 15 Aralik 2026'ya kadar.", badge:"Aktif"},
+    {type:"hedefli", title:"MQD Bonus - Extra Koltuk", detail:"Extra fare alanlar icin yuzde 20 bonus MQD. Rezervasyon ve seyahat: 10 Nisan - 10 Temmuz 2026. Kayit gerekli (hedefli).", badge:"Hedefli"},
+    {type:"kart", title:"Medallion Tatil Paketi - SMMED26", detail:"Medallion uyelere Delta Vacations paketlerinde ozel indirim. Rezervasyon: 1 Haziran - 31 Temmuz 2026. Seyahat: 1 Haziran - 30 Kasim 2026. Kod: SMMED26.", badge:"Aktif"}
+  ],
+  "aadvantage": [
+    {type:"kart", title:"Citi AAdvantage Globe Kart - 90.000 Mil", detail:"Haziran 2026 ay kampanyasi: 5.000 dolar harcama ile 4 ay icinde 90.000 bonus mil. Programin en yuksek kamuya acik bonusu.", badge:"Yeni"},
+    {type:"bonus", title:"AAdvantage Mil Satis - yuzde 40 Indirim", detail:"Aralik 2025'te mil satin alma kampanyasi: yuzde 40 bonus ile mil alindi. Her buyuk seyahat oncesi benzer kampanya bekleniyor.", badge:"Gecmis"},
+    {type:"hedefli", title:"Bask Bank Hesap Acilisi - 20.000 Mil", detail:"Mart 2026: Bask Bank'ta yeni hesap acan AAdvantage uyelerine 20.000 bonus mil.", badge:"Gecmis"},
+    {type:"promosyon", title:"Partner Otel Bonus Mil", detail:"Marriott, Hilton ve Hyatt'taki konaklamalarda ekstra AAdvantage mil kazanimi. Donemsel kampanyalar. AAdvantage hesabinizi otele baglayin.", badge:"Devam Eden"}
+  ],
+  "mileageplus": [
+    {type:"kart", title:"United Kart - 110.000 Mil + Bonus PQP", detail:"Nisan 2026: Chase United kart uyelerine 110.000 mil ve bonus PQP kampanyasi basladi.", badge:"Yeni"},
+    {type:"promosyon", title:"Mile Play - Haziran 2026", detail:"Hedefli MileagePlus uyelerine ozel: belli aktiviteleri tamamlayanlara bonus mil. Kayit: 9 Haziran 2026'ya kadar. Ucretli bilet gerektiriyor.", badge:"Hedefli"},
+    {type:"kart", title:"Summer of You - Kart Harcama Bonusu", detail:"Chase United kart sahiplerine 1 Mayis - 31 Agustos 2026 arasi harcamalar icin kisisellesmis bonus mil teklifleri. Kayit: 31 Temmuz 2026'ya kadar.", badge:"Aktif"},
+    {type:"bonus", title:"Otel Puani - MileagePlus Donusumu", detail:"1 Haziran 2026: Otel puanlarini MileagePlus'a cevirenlere yuzde 25 transfer bonusu. Donemsel, tekrarlanabilir kampanya.", badge:"Yeni"},
+    {type:"hedefli", title:"Capital One'dan MileagePlus'a Transfer", detail:"Capital One Venture uyelerine hedefli MileagePlus transfer bonusu kampanyalari duzenli olarak yurutuluyor.", badge:"Devam Eden"}
+  ],
+  "skywards": [
+    {type:"bonus", title:"Mil Satin Alma - yuzde 50 Bonus", detail:"Mayis 2026: Skywards uyeleri yuzde 50 bonus ile mil satin alabildi. Maksimum 100.000 mil. Fiyat: 2 sent/mil. 31 Mayis 2026'da sona erdi.", badge:"Gecmis"},
+    {type:"promosyon", title:"Marriott - 2.500 Skywards Mil", detail:"Aralik 2025: Bir sonraki Emirates ucusunda Marriott uyelerine 2.500 bonus Skywards mil kampanyasi.", badge:"Gecmis"},
+    {type:"promosyon", title:"Tier + Miles Uzatma - Korfez Krizi", detail:"Mart-Haziran 2026: Seyahat aksama doneminde tum Silver, Gold, Platinum tier'lar ve expire olacak miler 30 Haziran 2026'ya kadar uzatildi.", badge:"Aktif"},
+    {type:"bonus", title:"Skywards Everyday - Alisveris Bonusu", detail:"Skywards Everyday uygulamasiyla 300+ alisveris, yemek ve otel partnerinde ekstra mil kazanin. Yuzde 25-30 bonus donemler duzenli tekrarlaniyor.", badge:"Devam Eden"}
+  ],
+  "privilege": [
+    {type:"bonus", title:"Cift Qpoints - Nisan/Haziran 2026", detail:"16-22 Nisan arasi rezervasyon, 16 Nisan - 16 Haziran arasi seyahatte Qatar ucuslarinda 2X Qpoints. Elite ve secili Burgundy uyeler icin.", badge:"Gecmis"},
+    {type:"bonus", title:"Mil Satin Alma - yuzde 50 Avios Bonusu", detail:"Mayis 2026'da Avios satin alma kampanyasi: yuzde 50 bonus ile 1,53 sent/Avios fiyatina mal oldu.", badge:"Gecmis"},
+    {type:"promosyon", title:"Yeni Uye Kampanyasi - 2.000 Avios", detail:"JOINPC26 koduyla kaydolan yeni uyeler ilk ucus harcamalari sonrasi 2.000 bonus Avios kazaniyor.", badge:"Aktif"},
+    {type:"promosyon", title:"Tier Uzatma Politikasi", detail:"Korfez krizi sebebiyle Subat-Mayis 2026 arasi expire olacak tierlar uzatildi. Yuzde 90 Qpoints esigine ulasanlarin statusu 12 ay uzatiliyor.", badge:"Aktif"}
+  ],
+  "flyingblue": [
+    {type:"promosyon", title:"Aylik Promo Awards - Haziran 2026", detail:"Her ay 10-20 destinasyona yuzde 25-50 indirimli odul bileti. Bu ay Paris-New York, Amsterdam-Bangkok dahil secili rotalar.", badge:"Aktif"},
+    {type:"bonus", title:"Delta Ucuslari yuzde 20-33 Ucuz", detail:"2026 tarihli Delta ucuslari Flying Blue uzerinden SkyMiles'a kiyasla yuzde 20-33 daha az mil gerektiriyor. Atlanta-Munih: 15.000 mil daha ucuz.", badge:"Aktif"},
+    {type:"bonus", title:"Flying Blue Extra Aboneligi", detail:"Ocak 2026'da lansman: ucret karsiligi elite benzeri avantajlar - bonus XP, Promo Awards oncelikli erisim, lounge kredi. Ucus yapmadan statu avantaji.", badge:"Yeni"},
+    {type:"bonus", title:"Citi'den Flying Blue Transfer", detail:"Citi ThankYou puanlari Flying Blue'ya duzenli transfer bonuslari ile aktarilabiliyor. Son kampanyada yuzde 25-30 bonus goruldu.", badge:"Devam Eden"}
+  ],
+  "krisflyer": [
+    {type:"bonus", title:"Casa del Mar Langkawi - 1.000 Mil", detail:"Minimum 2 gece konaklamada 1.000 bonus KrisFlyer mil + oda ucretinde yuzde 10 indirim. 1 Ocak - 20 Aralik 2026.", badge:"Aktif"},
+    {type:"bonus", title:"Concorde Hotel Singapur - 2X Mil", detail:"Minimum 2 gece konaklamada 2 kat KrisFlyer mil + oda yukseltme. 1 Ocak - 31 Aralik 2026.", badge:"Aktif"},
+    {type:"bonus", title:"CIMB Malaysia - yuzde 20 Bonus", detail:"CIMB Bonus puanlarini KrisFlyer'a cevirmede yuzde 20 bonus. 15 Ocak - 15 Mart 2026 arasi.", badge:"Gecmis"},
+    {type:"promosyon", title:"Hard Rock Hotel Bali - 3X Mil", detail:"Uygun konaklamalarda 3 kat bonus KrisFlyer mil. 2 Ocak - 31 Mart 2026.", badge:"Gecmis"},
+    {type:"hedefli", title:"Aeroplan/Chase Transfer Bonuslari", detail:"Chase Ultimate Rewards ve diger Amex programlarindan KrisFlyer'a duzenli transfer bonuslari geliyor. 1:1 transfer oraninda bonus dikkatli takip edilmeli.", badge:"Devam Eden"}
+  ],
+  "aeroplan": [
+    {type:"promosyon", title:"Son Firsati: Eski Fiyatla Rezervasyon", detail:"1 Haziran 2026 devaluasyon oncesi rezervasyonlar eski fiyatlarla korunuyor. Uzun mesafe Business Class icin kritik pencere kapandi.", badge:"Sona Erdi"},
+    {type:"bonus", title:"Rove Miles'tan yuzde 25 Transfer Bonusu", detail:"6 Haziran 2026'ya kadar: 1.000 Rove Miles = 1.250 Aeroplan puani. Yeni transfer partneri acilisiyla baslayan kampanya.", badge:"Gecmis"},
+    {type:"bonus", title:"Aeroplan - United Hotel Donusumu", detail:"Duzenli olarak otel puanlarini Aeroplan'a cevirmek icin bonus kampanyalar yurutuluyor. Donemsel Marriott ve IHG bonuslari dikkat edilmeli.", badge:"Devam Eden"},
+    {type:"promosyon", title:"ITA Airways Award Erisimi", detail:"Nisan 2026'dan itibaren: Aeroplan uyeleri ITA Airways uzerinden Roma ve Italya'ya award rezervasyon yapabiliyor. Star Alliance entegrasyonu tamamlandi.", badge:"Yeni"}
+  ],
+  "avios": [
+    {type:"bonus", title:"Chase'den yuzde 30 Transfer Bonusu", detail:"Chase Ultimate Rewards'dan British Airways, Iberia ve Aer Lingus'a yuzde 30 transfer bonusu. Avios programlari arasi 1:1 transfer ile Qatar'a da aktarilabilir.", badge:"Aktif"},
+    {type:"bonus", title:"Bilt Rent Day - Avios Transfer Bonusu", detail:"Mayis 2026: Bilt'ten Avios'a yuzde 100'e kadar transfer bonusu. 1 Mayis kampanyasi ile 1:2 orana ulasti.", badge:"Gecmis"},
+    {type:"bonus", title:"QantasLink Kisa Hat Rezervasyonu", detail:"Aralik 2025'ten itibaren: QantasLink kisa hat ucuslari Avios ile rezerve edilebilir. Avustralya ic hat erisimi acildi.", badge:"Yeni"},
+    {type:"hedefli", title:"Avios Satin Alma Kampanyasi", detail:"Qatar uzerinden Avios satin alma: Mayis 2026'da yuzde 50 bonus ile 1,53 sent/Avios. Avios 5 programda kullanilabilir.", badge:"Gecmis"}
+  ],
+  "qff": [
+    {type:"bonus", title:"Capital One'dan yuzde 20 Transfer Bonusu", detail:"1 Haziran 2026: Capital One Venture'dan Qantas'a yuzde 20 transfer bonusu. American Airlines ucuslari 7.700 milden basliyor.", badge:"Yeni"},
+    {type:"promosyon", title:"2X Status Credits Kampanyasi", detail:"Haziran 2025: Secili ucuslarda 2 kat Status Credits kazanimi. Yil icinde tekrarlanan kampanya - Qantas her ceyrek benzer promosyon sunuyor.", badge:"Gecmis"},
+    {type:"bonus", title:"2X Qantas Points", detail:"Haziran 2025: Secili ucuslarda 2 kat Qantas Points kampanyasi.", badge:"Gecmis"},
+    {type:"promosyon", title:"Yeni Tier Avantajlari 2026", detail:"Silver uyelerine ekstra lounge davetiyesi, tum elite uyelerine otel, tatil ve Qantas Wine'da yeni indirim ve kupon avantajlari.", badge:"Aktif"}
+  ],
+  "milesmore": [
+    {type:"bonus", title:"ITA Airways Award Erisimi", detail:"Nisan 2026: ITA Airways Star Alliance'a katildi. Miles & More uyeleri artik Roma ve Italya guzergahlarina award bilet rezervasyonu yapabiliyor.", badge:"Yeni"},
+    {type:"hedefli", title:"HON Circle Davetiye Kampanyasi", detail:"600.000 qualifying mil esigine ulasan uyeler davetiye ile HON Circle'a kabul ediliyor. Ozel bir statu - kampanya degil, daimli program.", badge:"Devam Eden"},
+    {type:"promosyon", title:"Sabit Chart - Partner Ucuslar", detail:"LH Group kendi metalinde dinamige gectikten sonra Star Alliance partner ucuslarda (United, Singapore, Air Canada) sabit chart korunuyor. En iyi sweet spot burada.", badge:"Aktif"},
+    {type:"bonus", title:"Miles & More Kredi Kart Bonusu", detail:"Lufthansa ve SWISS ortak kart sahiplerine belirli harcama esiklerinde bonus mil. Almanya ve Isvicre'deki kart sahipleri icin aktif teklifler mevcut.", badge:"Devam Eden"}
+  ],
+  "asiamiles": [
+    {type:"bonus", title:"Marriott Bonvoy Transfer Bonusu", detail:"Marriott puanlarindan Asia Miles'a transfer bonuslari duzenli olarak yurutuluyor. 60.000 Marriott = 25.000 Asia Miles (+5.000 bonus). Donemsel artis bekleniyor.", badge:"Devam Eden"},
+    {type:"promosyon", title:"Cathay Business Class Odul Deneyimi", detail:"Yenilenen Business Class Studio ile Hong Kong-Londra ve Hong Kong-Paris rotalarinda premium award deneyimi. Envanter acikligi iyi seviyelerde.", badge:"Aktif"},
+    {type:"bonus", title:"Hilton Honors Transfer Ortakligi", detail:"Hilton puanlarindan Asia Miles'a donusum aktif. Donemsel bonus ile aktarim daha kazancli hale geliyor.", badge:"Devam Eden"},
+    {type:"hedefli", title:"Asia Miles Mil Satin Alma", detail:"Periyodik olarak mil satin alma kampanyalari duzenle­niyor. Son kampanyada yuzde 35-50 bonus ile satin alim yapildi.", badge:"Devam Eden"}
+  ],
+  "mileageplan": [
+    {type:"promosyon", title:"Delta Medallion Status Match", detail:"Delta MQD sisteminden rahatsiz Medallion uyelerine Alaska direkt status match teklif etti. Harcama sarti yok - ucu kanitla, statunu al.", badge:"Gecmis"},
+    {type:"bonus", title:"Milestone Rewards Guncellendi", detail:"Eylul 2025: Belirli ucus kilometre taslarina ulasanlara bonus mil, upgrade kuponu ve ekstra avantajlar. Ucus odakli uye bagliligi pekistiriliyor.", badge:"Aktif"},
+    {type:"bonus", title:"Philippine Airlines Ortakligi", detail:"Mayis 2025: Philippine Airlines, Mileage Plan'in 32. ortagi oldu. Manila ve Asya-Pasifik rotalarinda Alaska mileri kazanilabiliyor.", badge:"Yeni"},
+    {type:"promosyon", title:"CLEAR+ Uyelik - 1.500 Alaska Mili", detail:"Mayis 2026: CLEAR+ uyeligi ile 1.500 Alaska Mileage Plan mili kazanma firsati. Havalimanlarinda hizli gecis uygulamasi.", badge:"Yeni"}
+  ],
+  "rapidrewards": [
+    {type:"bonus", title:"Puan Satin Alma - yuzde 45 Indirim", detail:"Haziran 2026: Southwest Rapid Rewards puanlari yuzde 45 indirimle satin alinabiliyor. 22 Temmuz 2026'ya kadar.", badge:"Aktif"},
+    {type:"promosyon", title:"Companion Pass Firsati", detail:"135.000 puan biriktiren uyeler takvim yili sonuna kadar bir kisi her ucusta ucretsiz refakatci hakki kazaniyor. Yilin en degerli tekli avantaji.", badge:"Devam Eden"},
+    {type:"bonus", title:"Kredi Kart Giris Bonuslari", detail:"Southwest Rapid Rewards kart sahiplerine duzenli buyuk giris bonuslari. Son kampanyalarda 80.000-100.000 puan araligi goruldu.", badge:"Devam Eden"},
+    {type:"hedefli", title:"Rapid Rewards Yeni Rota Promosyonlari", detail:"Red-eye (gece) ucuslar baslamasiyla yeni rotalarda ilk donem bonus puan kampanyalari yurutuluyor.", badge:"Devam Eden"}
+  ],
+  "lifemiles": [
+    {type:"bonus", title:"Citi'den LifeMiles'a yuzde 25 Transfer", detail:"Nisan 2026: Citi ThankYou'dan LifeMiles'a yuzde 25 transfer bonusu. United ucuslari 6.000 Citi puanindan, Avrupa Business 44.000'den basladi.", badge:"Gecmis"},
+    {type:"bonus", title:"Mil Satin Alma - yuzde 160 Bonus", detail:"Nisan 2026: Yuzde 160 bonus ile mil satin alma kampanyasi. Efektif maliyet 1,27 sent/mil. Ancak 3. devaluasyon bu degeri hizla eriyor.", badge:"Gecmis"},
+    {type:"bonus", title:"ITA Airways Award Erisimi", detail:"Nisan 2026: ITA Airways Star Alliance'a katilimiyla LifeMiles uzerinden ITA ucuslari rezerve edilebiliyor. Roma'dan ABD'ye 8 sehir mevcut.", badge:"Yeni"},
+    {type:"uyari", title:"Devaluasyon Riski: Mil Biriktirme Onerilmez", detail:"Mayis 2026'daki 3. devaluasyon sonrasi guvenilir analistler LifeMiles'ta mil biriktirmeyi onermiyor. 'Kazan-harca' stratejisi uygulanmali.", badge:"Uyari"}
+  ]
+,
+"milessmiles":[
+  {type:"promosyon",title:"Mil Pusulasi — Amerika Rotalari %30 Indirim",detail:"Americas & Mexico rotalarinda %30 mil indirimi kampanyasi. THY'nin en populer uzun hat kampanyasindan biri.",badge:"Aktif"},
+  {type:"promosyon",title:"Mil Pusulasi — Avrupa Rotalari",detail:"Avrupa destinasyonlarina donusel indirimli mil kampanyasi serisi. Her ay farkli bolge.",badge:"Devam Eden"},
+  {type:"bonus",title:"Co-Brand Kart Bonus Mil",detail:"Axess, World ve Bonus kart harcamalarinda ekstra mil kazanimi. Yillik kart yenileme bonuslari.",badge:"Devam Eden"},
+  {type:"promosyon",title:"Star Alliance Award Biletleri",detail:"44 Star Alliance havayolunda miles ile rezervasyon imkani. ITA Airways eklemesiyle Italya erisimi acildi.",badge:"Aktif"}
+]
+};
+
+var OP={
+  skymiles:   {rank:1,  val:"31.8", chg:"+3.9",  r23val:27923, r23:1,  up:true,  cpp:"1.2"},
+  aadvantage: {rank:2,  val:"26.7", chg:"+2.8",  r23val:23933, r23:2,  up:true,  cpp:"1.6"},
+  mileageplus:{rank:3,  val:"25.3", chg:"+3.3",  r23val:22002, r23:3,  up:true,  cpp:"1.35"},
+  avios:      {rank:4,  val:"10.3", chg:"+3.3",  r23val:7084,  r23:5,  up:true,  cpp:"1.7"},
+  rapidrewards:{rank:5, val:"8.9",  chg:"+0.1",  r23val:8828,  r23:4,  up:true,  cpp:"1.5"},
+  milesmore:  {rank:6,  val:"8.7",  chg:"+0.7",  r23val:7971,  r23:6,  up:true,  cpp:"1.1"},
+  flyingblue: {rank:7,  val:"7.5",  chg:"+0.5",  r23val:6923,  r23:7,  up:true,  cpp:"1.5"},
+  aeroplan:   {rank:8,  val:"7.4",  chg:"+0.5",  r23val:6840,  r23:8,  up:true,  cpp:"1.6"},
+  qff:        {rank:9,  val:"7.0",  chg:"+2.8",  r23val:4262,  r23:12, up:true,  cpp:"1.2"},
+  krisflyer:  {rank:11, val:"5.6",  chg:"+1.1",  r23val:4491,  r23:13, up:true,  cpp:"1.1"},
+  mileageplan:{rank:13, val:"5.3",  chg:"+0.9",  r23val:4469,  r23:14, up:true,  cpp:"1.8"},
+  asiamiles:  {rank:14, val:"5.3",  chg:"+0.8",  r23val:4552,  r23:15, up:true,  cpp:"1.1"},
+  milessmiles:{rank:15, val:"5.1",  chg:"+2.5",  r23val:2624,  r23:22, up:true,  cpp:"1.1"},
+  privilege:  {rank:20, val:"4.1",  chg:"+1.9",  r23val:2244,  r23:25, up:true,  cpp:"1.6"},
+  skywards:   {rank:24, val:"2.9",  chg:"+0.2",  r23val:2710,  r23:23, up:true,  cpp:"1.1"},
+  lifemiles:  {rank:26, val:"2.5",  chg:"+0.2",  r23val:2313,  r23:27, up:true,  cpp:"1.2"}
+};
+
+var COLORS={
+  skymiles:"#003366",aadvantage:"#C8102E",mileageplus:"#1A6FAF",
+  skywards:"#C8102E",privilege:"#5C0632",flyingblue:"#00529B",
+  krisflyer:"#003580",aeroplan:"#D01E28",avios:"#1B3F6A",
+  qff:"#E40000",milesmore:"#06038D",asiamiles:"#006564",
+  mileageplan:"#00805D",rapidrewards:"#304CB2",lifemiles:"#D62A2A",milessmiles:"#E30613",milessmiles:"#E30613"
+};
+
+var CODES={
+  skymiles:"DL",aadvantage:"AA",mileageplus:"UA",skywards:"EK",
+  privilege:"QR",flyingblue:"FB",krisflyer:"SQ",aeroplan:"AC",
+  avios:"BA",qff:"QF",milesmore:"LH",asiamiles:"CX",
+  mileageplan:"AS",rapidrewards:"WN",lifemiles:"AV",milessmiles:"TK"
+};
+
+var LIFE=["Otel","Arac","Concierge","Lifestyle","Guvenlik","Alisveris","Duty Free",
+  "WiFi","Kisisel Asistan","Home Check-in","Surpriz","Exclusives","Gizli Avantaj",
+  "Platinum Paketi","HON Pack","Konuk Devri","First Terminal","Kisisel Takim",
+  "The Life","Dubai Mall","Cash+Miles","Skywards Everyday","Tier Hizlandirma",
+  "Refakatci","Lifetime","Chauffeur","Fine Dining","KrisShop","SeatPlus",
+  "CityPlus","Companion","Companion Fare","Gold Upgrade","WhatsApp","CLEAR+",
+  "FCT","Muazzam Deger","VIP Alisveris","Fashion Avenue"];
+
+// ── DOM YARDIMLARI ────────────────────────────────────────────
+function el(tag,cls,txt){
+  var e=document.createElement(tag);
+  if(cls) e.className=cls;
+  if(txt!==undefined) e.textContent=txt;
+  return e;
+}
+function app(parent){
+  for(var i=1;i<arguments.length;i++) parent.appendChild(arguments[i]);
+  return parent;
+}
+
+// ── SIDEBAR ───────────────────────────────────────────────────
+function buildSidebar(){
+  var list=document.getElementById('prog-list');
+  list.innerHTML='';
+  DATA.forEach(function(p,i){
+    var bg=COLORS[p.id]||p.color;
+    var code=CODES[p.id]||'??';
+    var op=OP[p.id];
+    var item=el('div','pi');
+    item.onclick=(function(idx){return function(){show(idx);};})(i);
+    item.id='pi'+i;
+    var badge=el('div','pi-badge');badge.style.background=bg;badge.textContent=code;
+    var info=el('div','pi-info');
+    app(info,el('div','pi-name',p.program),el('div','pi-airline',p.airline));
+    app(item,badge,info);
+    if(op){var v=el('div','pi-val','$'+op.val+'B');app(item,v);}
+    list.appendChild(item);
+  });
+
+  var ccList=document.getElementById('cc-list');
+  ccList.innerHTML='';
+  DATA.forEach(function(p,i){
+    var bg=COLORS[p.id]||p.color;
+    var wrap=el('div','cc-item');
+    var cb=document.createElement('input');cb.type='checkbox';cb.id='cc'+i;cb.value=i;cb.onchange=updateCC;
+    var dot=el('div','cc-dot');dot.style.background=bg;
+    var lbl=document.createElement('label');lbl.className='cc-name';lbl.htmlFor='cc'+i;lbl.textContent=p.program;
+    app(wrap,cb,dot,lbl);ccList.appendChild(wrap);
+  });
+}
+
+function filterProgs(q){
+  q=q.toLowerCase();
+  document.querySelectorAll('.pi').forEach(function(e,i){
+    var p=DATA[i];
+    var ok=!q||p.program.toLowerCase().includes(q)||p.airline.toLowerCase().includes(q);
+    e.style.display=ok?'':'none';
+  });
+}
+
+function switchTab(t){
+  ['list','compare'].forEach(function(x){
+    document.getElementById('tab-'+x).classList.toggle('active',x===t);
+    document.getElementById('panel-'+x).style.display=x===t?'':'none';
+  });
+}
+
+function updateCC(){
+  var n=document.querySelectorAll('#cc-list input:checked').length;
+  document.getElementById('cc-count').textContent=n?n+' program secildi':'';
+}
+
+// ── SHOW ──────────────────────────────────────────────────────
+function show(i){
+  document.querySelectorAll('.pi').forEach(function(e,j){e.classList.toggle('active',j===i);});
+  document.getElementById('welcome').style.display='none';
+  document.getElementById('compare-view').style.display='none';
+
+  var p=DATA[i];
+  var op=OP[p.id];
+  var bg=COLORS[p.id]||p.color;
+  var code=CODES[p.id]||'?';
+  var pv=document.getElementById('prog-view');
+  pv.innerHTML='';
+  pv.style.display='block';
+
+  // Header
+  var hdr=el('div','prog-hdr');
+  var hero=el('div','prog-hero',code);hero.style.background=bg;
+  var phi=el('div','ph-info');
+  var tags=el('div','ph-tags');
+  [p.alliance,p.region,p.model,p.members+' uye'].forEach(function(t){app(tags,el('span','tag',t));});
+  var tr=el('span','tag tag-r','Top '+p.rank);tags.appendChild(tr);
+  if(op){
+    var tg=el('span','tag tag-gold','On Point #'+op.rank+' / $'+op.val+'B');tags.appendChild(tg);
+  }
+  app(phi,el('div','ph-name',p.program),el('div','ph-airline',p.airline),tags);
+  app(hdr,hero,phi);
+  pv.appendChild(hdr);
+
+  // On Point Kutusu
+  if(op){
+    var box=el('div','op-box');
+    var otag=el('div','op-tag','On Point Loyalty Top 100 - 2026');
+    box.appendChild(otag);
+    var grid=el('div','op-grid');
+    // Rank
+    var rk=el('div');
+    app(rk,el('div','op-rank-n','#'+op.rank),el('div','op-rank-l','Kuresel Sira'));
+    // Sep
+    var sep=el('div','op-sep');
+    // Val
+    var vm=el('div','op-main');
+    app(vm,el('div','op-val','$'+op.val+' Milyar'),el('div','op-val-l','Tahmini Program Degeri (USD)'));
+    // Right
+    var rt=el('div','op-right');
+    var chg=parseFloat(op.chg);
+    var bd=el('span',op.up?'op-up':'op-dn',(op.up?'+ ':'')+op.chg+'B');
+    var rc=op.r23-op.rank;
+    var r23txt='2023: #'+op.r23+(op.r23val?' ($'+Math.round(op.r23val/1000*10)/10+'B)':'')+' '+(rc>0?'(▲ '+rc+' sira)':rc<0?'(▼ '+Math.abs(rc)+' sira)':'(Ayni sira)');
+    var sc=el('div','op-rank23',r23txt);
+    var cv=el('div','op-cpp','Mil degeri: '+op.cpp+' cent/mil (TPG Haz.2026)');
+    app(rt,bd,sc,cv);
+    app(grid,rk,sep,vm,rt);
+    box.appendChild(grid);
+    var sr=el('div','op-src','Kaynak: On Point Loyalty Top 100 Most Valuable Airline Loyalty Programs 2026, 31 Mart 2026, Singapur');
+    box.appendChild(sr);
+    pv.appendChild(box);
+  }
+
+  // Tabs
+  var tabRow=el('div','tab-row');
+  function makeTab(lbl,tab,active){
+    var b=el('button','prog-tab'+(active?' active':''),lbl);
+    b.setAttribute('data-tab',tab);
+    b.onclick=function(){showTab(this);};
+    return b;
+  }
+  app(tabRow,makeTab('Genel Bakis','genel',true),makeTab('Kampanyalar','kampanya',false));
+  pv.appendChild(tabRow);
+
+  // Genel panel
+  var pg=el('div','content');pg.id='panel-genel';
+
+  // Ozet
+  var ss=el('div','sec');
+  app(ss,el('div','sec-title','Program Ozeti'),el('div','sec-body',p.summary));
+  pg.appendChild(ss);
+
+  // Tiers
+  var ts=el('div','sec');
+  app(ts,el('div','sec-title','Uyelik Kademeleri - tiklayarak detay gor'));
+  var tg2=el('div','tier-grid');
+  var tierDets=TIER_DETAILS[p.id]||[];
+  p.tiers.forEach(function(t,ti){
+    var td=tierDets[ti]||null;
+    var card=el('div','tier-card');
+    card.onclick=function(){this.classList.toggle('open');};
+    var top=el('div','tier-top');
+    var thdr=el('div','tier-hdr');
+    var dot=el('div','tier-dot');dot.style.background=td?td.color:'#9A9794';
+    var tn=el('div','tier-name',t.name);
+    var arr=el('div','tier-arrow','▼');
+    app(thdr,dot,tn,arr);
+    app(top,thdr,el('div','tier-req',t.req));
+    app(card,top,el('div','tier-perks',t.perks),el('div','tier-hint','Tiklayin: tam ayricaliklar'));
+    if(td&&td.details&&td.details.length){
+      var det=el('div','tier-det');
+      var fi=td.details.filter(function(d){return LIFE.indexOf(d.label)<0;});
+      var li=td.details.filter(function(d){return LIFE.indexOf(d.label)>=0;});
+      function addRow(par,d,isL){
+        var row=el('div','det-row');
+        var ic=el('div','det-icon',d.icon);
+        var inf=el('div');
+        var lb=el('div','det-sub',d.label);if(isL)lb.style.color='#0B4FA3';
+        app(inf,lb,el('div','det-text',d.text));
+        app(row,ic,inf);par.appendChild(row);
+      }
+      if(fi.length){det.appendChild(el('div','det-lbl','Ucus Ayricaliklari'));fi.forEach(function(d){addRow(det,d,false);});}
+      if(li.length){det.appendChild(el('div','life-div','🏨 Otel, Arac & Yasam Ayricaliklari'));li.forEach(function(d){addRow(det,d,true);});}
+      card.appendChild(det);
+    }
+    tg2.appendChild(card);
+  });
+  ts.appendChild(tg2);pg.appendChild(ts);
+
+  // Haberler
+  var ns=el('div','sec');
+  ns.appendChild(el('div','sec-title','Son Donem Gelismeler'));
+  var nb=el('div','news-box');
+  nb.appendChild(el('div','news-note','En yeniden en eskiye - Kaynak: LoyaltyLobby, TPG, AwardFares - Haziran 2026'));
+  p.news.forEach(function(n,ni){
+    var item=el('div','news-item');
+    var top=el('div','news-top');
+    top.appendChild(el('div','news-date',n.date));
+    if(ni===0){var fr=el('span','news-fresh','EN GUNCEL');top.appendChild(fr);}
+    app(item,top,el('div','news-text',n.text));
+    nb.appendChild(item);
+  });
+  app(ns,nb);pg.appendChild(ns);
+
+  // Insights
+  if(p.insights&&p.insights.length){
+    var is2=el('div','sec');
+    is2.appendChild(el('div','sec-title','Stratejik Cikarimlar'));
+    var ib=el('div','insight-box');
+    ib.appendChild(el('div','insight-title','Miles&Smiles Perspektifinden'));
+    p.insights.forEach(function(ins,ii){
+      var row=el('div','insight-item');
+      var num=el('div','insight-number',ii+1);
+      var txt=el('div','insight-text');
+      // insights {bold, text} veya duz string olabilir
+      if(typeof ins === 'object' && ins.bold){
+        var b=document.createElement('strong');
+        b.textContent=ins.bold+' ';
+        txt.appendChild(b);
+        txt.appendChild(document.createTextNode(ins.text||''));
+      } else {
+        txt.textContent=ins;
+      }
+      app(row,num,txt);
+      ib.appendChild(row);
+    });
+    app(is2,ib);pg.appendChild(is2);
+  }
+
+  // M&S Karsilastirma
+  if(p.id !== 'milessmiles' && p.compare && p.compare.length){
+    var cs=el('div','sec');
+    cs.appendChild(el('div','sec-title','Miles&Smiles ile Karsilastirma'));
+    var cg2=el('div','compare-grid');
+
+    // M&S kolonu
+    var col1=el('div','compare-col compare-ms');
+    col1.appendChild(el('div','compare-head','Miles&Smiles'));
+    p.compare.forEach(function(r){
+      var row=el('div','compare-row');
+      app(row,el('div','compare-lbl',r.lbl),el('div','compare-val',r.ms||'-'));
+      col1.appendChild(row);
+    });
+
+    // Hedef program kolonu
+    var col2=el('div','compare-col');
+    col2.appendChild(el('div','compare-head',p.program));
+    p.compare.forEach(function(r){
+      var row=el('div','compare-row');
+      app(row,el('div','compare-lbl',r.lbl),el('div','compare-val',r.target||'-'));
+      col2.appendChild(row);
+    });
+
+    app(cg2,col1,col2);
+    app(cs,cg2);pg.appendChild(cs);
+  }
+
+  pv.appendChild(pg);
+
+  // Kampanya panel
+  var pk=el('div','content');pk.id='panel-kampanya';pk.style.display='none';
+  var camps=CAMPAIGNS[p.id]||[];
+  pk.appendChild(el('div','',camps.length+' kampanya - Haziran 2026'));
+  var cg=el('div','camp-grid');
+  camps.forEach(function(c){
+    var card=el('div','camp-card '+(c.type||''));
+    card.appendChild(el('div','camp-type',(c.type||'').toUpperCase()));
+    var ct=el('div','camp-top');
+    app(ct,el('div','camp-title',c.title),el('span','camp-badge',c.badge||''));
+    app(card,ct,el('div','camp-detail',c.detail));
+    cg.appendChild(card);
+  });
+  pk.appendChild(cg);pv.appendChild(pk);
+}
+
+function showTab(btn){
+  var tab=btn.getAttribute('data-tab');
+  document.querySelectorAll('.prog-tab').forEach(function(b){b.classList.remove('active');});
+  btn.classList.add('active');
+  var g=document.getElementById('panel-genel');
+  var k=document.getElementById('panel-kampanya');
+  if(g)g.style.display=tab==='genel'?'block':'none';
+  if(k)k.style.display=tab==='kampanya'?'block':'none';
+}
+
+// ── COMPARE ──────────────────────────────────────────────────
+function runCompare(){
+  var sel=[];
+  document.querySelectorAll('#cc-list input:checked').forEach(function(cb){sel.push(+cb.value);});
+  if(sel.length<2||sel.length>3){alert('2 veya 3 program secin.');return;}
+  var progs=sel.map(function(i){return DATA[i];});
+  document.getElementById('welcome').style.display='none';
+  document.getElementById('prog-view').style.display='none';
+  var cv=document.getElementById('compare-view');
+  cv.innerHTML='';cv.style.display='block';
+  var hdr2=el('div','mc-hdr');
+  app(hdr2,el('div','mc-title','Program Karsilastirmasi'),
+    el('div','mc-sub',progs.map(function(p){return p.program;}).join(' vs ')));
+  cv.appendChild(hdr2);
+  var mc=el('div','mc-content');
+  var btn2=el('button','mc-print','Yazdir');btn2.onclick=function(){window.print();};
+  mc.appendChild(btn2);
+  var wrap=el('div','mc-wrap');
+  var tbl=el('table','mc-table');
+  var thead=el('thead');var hr2=el('tr');
+  hr2.appendChild(el('th','','Kriter'));
+  progs.forEach(function(p){
+    var th=document.createElement('th');
+    var phd=el('div','mc-phd');
+    var mb=el('div','mc-badge',CODES[p.id]||'?');mb.style.background=COLORS[p.id]||p.color;
+    app(phd,mb,document.createTextNode(p.program));
+    th.appendChild(phd);hr2.appendChild(th);
+  });
+  thead.appendChild(hr2);tbl.appendChild(thead);
+  var tbody=el('tbody');
+  var rows=[
+    ['Ittifak',function(p){return p.alliance;}],
+    ['Uye Sayisi',function(p){return p.members;}],
+    ['Model',function(p){return p.model;}],
+    ['On Point Sirasi',function(p){var o=OP[p.id];return o?'#'+o.rank:'–';},'mc-op'],
+    ['On Point Degeri',function(p){var o=OP[p.id];return o?'$'+o.val+' Milyar':'–';},'mc-op'],
+    ['Mil Degeri',function(p){var o=OP[p.id];return o?o.cpp+' cent/mil':'–';}],
+    ['Kurulus',function(p){return p.founded||'–';}],
+    ['Program Ozeti',function(p){return p.summary.substring(0,100)+'...';}],
+  ];
+  rows.forEach(function(r){
+    var tr2=el('tr');
+    tr2.appendChild(el('td','mc-lbl',r[0]));
+    progs.forEach(function(p){
+      var td=el('td',r[2]||'',r[1](p));tr2.appendChild(td);
+    });
+    tbody.appendChild(tr2);
+  });
+  tbl.appendChild(tbody);wrap.appendChild(tbl);mc.appendChild(wrap);
+  cv.appendChild(mc);
+}
+
+buildSidebar();
+/* ]]> */
+</script>
+</body>
+</html>
